@@ -16,6 +16,10 @@ SRC = mx_uls.c \
 	mx_get_owner.c \
 	mx_get_files_dir.c \
 	mx_push_file.c \
+	mx_get_mtime.c \
+	mx_get_permissions.c \
+	mx_get_links.c \
+	mx_get_group.c \
 
 
 INCLUDE = -I $(LBMXD) \

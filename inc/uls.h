@@ -60,5 +60,9 @@ t_files *mx_get_files_dir(t_file *file);
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
 void mx_get_owner(t_file *file, struct stat file_stat);
+void mx_get_mtime(t_file *file, struct stat file_stat);
+void mx_get_permissions(t_file *file, struct stat file_stat);
+void mx_get_links(t_file *file, struct stat file_stat);
+void mx_get_group(t_file *file, struct stat file_stat);
 
 #endif
