@@ -16,9 +16,12 @@ void mx_check_flags(char **argv, char *flags, int argc) {
 static bool check_arg(char *arg, char *flags) {
     bool isvalid = false;
 
+    if (!mx_strcmp(arg, "--")) {
+        return false;
+    }
     for (int i = 1; i < mx_strlen(arg); i++) {
         isvalid = false;
-        for (int j = 0; j < mx_strlen(flags); j++) {
+        for (int j = 1; j < mx_strlen(flags); j++) {
             if (arg[i] == flags[j]) {
                 isvalid = true;
                 break;

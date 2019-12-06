@@ -33,6 +33,7 @@ SRC = mx_uls.c \
 	mx_get_atime.c \
 	mx_get_stime.c \
 	mx_get_inode.c \
+	mx_check_args.c \
 
 
 INCLUDE = -I $(LBMXD) \

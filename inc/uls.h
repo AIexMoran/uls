@@ -61,6 +61,7 @@ bool mx_isflag(char *arg);
 void mx_print_error(char *error);
 void mx_check_flags(char **argv, char *flags, int argc);
 int mx_get_end_flags(char **argv, int argc);
+void mx_check_args(char **argv, int start, int argc);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
