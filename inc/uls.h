@@ -18,6 +18,11 @@
 #include <sys/errno.h>
 #include "inc/libmx.h"
 
+typedef struct s_files {
+    t_file *file;
+    struct s_files *next;
+} t_files;
+
 typedef struct s_file {
     char *filename; //d_name in readdir
     char *relative_path;
