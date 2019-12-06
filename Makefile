@@ -8,6 +8,8 @@ LBMXD = libmx
 LMBX = libmx.a
 INC = uls.h
 SRC = mx_uls.c \
+	mx_create_file.c \
+	mx_delete_file.c \
 
 
 INCLUDE = -I $(LBMXD) \
