@@ -55,6 +55,7 @@ void mx_push_file(t_files **files, t_file *file);
 t_files *mx_new_file(t_file *file);
 t_file *mx_create_file(char *relative_path, char *filename);
 void mx_delete_file(t_file *file);
+t_files *mx_get_files_dir(t_file *file);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
