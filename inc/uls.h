@@ -18,10 +18,6 @@
 #include <sys/errno.h>
 #include "inc/libmx.h"
 
-typedef struct s_files {
-    t_file *file;
-    struct s_files *next;
-} t_files;
 
 typedef struct s_file {
     char *filename; //d_name in readdir
@@ -49,6 +45,11 @@ typedef struct s_file {
     char *full_access_time;
     char *full_status_time;
 } t_file;
+
+typedef struct s_files {
+    t_file *file;
+    struct s_files *next;
+} t_files;
 
 t_file* mx_create_file(char *relative_path, char *filename);
 void mx_delete_file(t_file *file);
