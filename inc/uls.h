@@ -46,12 +46,14 @@ typedef struct s_file {
     char *full_status_time;
 } t_file;
 
-typedef struct s_files {
+typedef struct s_files { // struct for files
     t_file *file;
     struct s_files *next;
 } t_files;
 
-t_file* mx_create_file(char *relative_path, char *filename);
+void mx_push_file(t_files **files, t_file *file);
+t_files *mx_new_file(t_file *file);
+t_file *mx_create_file(char *relative_path, char *filename);
 void mx_delete_file(t_file *file);
 
 #endif
