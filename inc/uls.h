@@ -58,5 +58,6 @@ void mx_delete_file(t_file *file);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
+void mx_get_owner(t_file *file, struct stat file_stat);
 
 #endif

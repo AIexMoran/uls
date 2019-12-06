@@ -13,7 +13,7 @@ SRC = mx_uls.c \
 	mx_get_full_path.c \
 	mx_get_size.c \
 	mx_new_file.c \
-
+	mx_get_owner.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \
