@@ -10,6 +10,8 @@ INC = uls.h
 SRC = mx_uls.c \
 	mx_create_file.c \
 	mx_delete_file.c \
+	mx_get_full_path.c \
+	mx_get_size.c \
 
 
 INCLUDE = -I $(LBMXD) \
