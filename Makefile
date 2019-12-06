@@ -20,6 +20,13 @@ SRC = mx_uls.c \
 	mx_get_permissions.c \
 	mx_get_links.c \
 	mx_get_group.c \
+	mx_get_block_size.c \
+	mx_get_blocks_count.c \
+	mx_get_attr_acl.c \
+	mx_get_ctime.c \
+	mx_get_atime.c \
+	mx_get_stime.c \
+	mx_get_inode.c \
 
 
 INCLUDE = -I $(LBMXD) \

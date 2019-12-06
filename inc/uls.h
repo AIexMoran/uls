@@ -64,5 +64,12 @@ void mx_get_mtime(t_file *file, struct stat file_stat);
 void mx_get_permissions(t_file *file, struct stat file_stat);
 void mx_get_links(t_file *file, struct stat file_stat);
 void mx_get_group(t_file *file, struct stat file_stat);
+void mx_get_block_size(t_file *file, struct stat file_stat);
+void mx_get_blocks_count(t_file *file, struct stat file_stat);
+void mx_get_attr_acl(t_file *file);
+void mx_get_ctime(t_file *file, struct stat file_stat);
+void mx_get_atime(t_file *file, struct stat file_stat);
+void mx_get_stime(t_file *file, struct stat file_stat);
+void mx_get_inode(t_file *file, struct stat file_stat);
 
 #endif
