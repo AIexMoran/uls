@@ -12,6 +12,7 @@ SRC = mx_uls.c \
 	mx_delete_file.c \
 	mx_get_full_path.c \
 	mx_get_size.c \
+	mx_new_file.c \
 
 
 INCLUDE = -I $(LBMXD) \
