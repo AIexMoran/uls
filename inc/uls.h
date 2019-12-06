@@ -18,7 +18,6 @@
 #include <sys/errno.h>
 #include "inc/libmx.h"
 
-
 typedef struct s_file {
     char *filename; //d_name in readdir
     char *relative_path;
@@ -56,6 +55,12 @@ t_files *mx_new_file(t_file *file);
 t_file *mx_create_file(char *relative_path, char *filename);
 void mx_delete_file(t_file *file);
 t_files *mx_get_files_dir(t_file *file);
+void mx_sort_files(t_files *files, bool (*cmp)(t_file *, t_file *));
+void mx_sort_args(int argc, int start, char **argv);
+bool mx_isflag(char *arg);
+void mx_print_error(char *error);
+void mx_check_flags(char **argv, char *flags, int argc);
+int mx_get_end_flags(char **argv, int argc);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
