@@ -21,6 +21,7 @@
 typedef struct s_file {
     char *filename; //d_name in readdir
     char *relative_path;
+    char *full_path;
     size_t size; // stat st_size
     char *owner; // getpwuid(info.st_uid) stat(filename, &info)
     char *modf_time; //stat st_mtime

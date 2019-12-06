@@ -5,5 +5,6 @@ t_file* mx_create_file(char *relative_path, char *filename) {
 
     new_file->filename = mx_strdup(filename);
     new_file->relative_path = mx_strdup(relative_path);
+    
     return new_file;
 }
