@@ -22,6 +22,10 @@ SRC = mx_uls.c \
 	mx_isflag.c \
 	mx_print_error.c \
 	mx_get_end_flags.c \
+	mx_get_mtime.c \
+	mx_get_permissions.c \
+	mx_get_links.c \
+	mx_get_group.c \
 
 
 INCLUDE = -I $(LBMXD) \

@@ -10,5 +10,9 @@ t_file* mx_create_file(char *relative_path, char *filename) {
     lstat(new_file->full_path, &file_stat);
     mx_get_size(new_file, file_stat);
     mx_get_owner(new_file, file_stat);
+    mx_get_mtime(new_file, file_stat);
+    mx_get_permissions(new_file, file_stat);
+    mx_get_links(new_file, file_stat);
+    mx_get_group(new_file, file_stat);
     return new_file;
 }
