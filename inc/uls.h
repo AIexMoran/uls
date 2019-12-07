@@ -58,6 +58,8 @@ typedef struct s_file {
 
 typedef struct s_files { // struct for files
     t_file *file;
+    bool istotal;
+    bool isname;
     struct s_files *next;
 } t_files;
 
@@ -75,6 +77,11 @@ void mx_check_flags(char **argv, int argc);
 int mx_get_end_flags(char **argv, int argc);
 void mx_check_args(char **argv, int start, int argc);
 int mx_set_flags(char **argv, int end_flags);
+char *mx_format_dir(char *dir);
+t_files *mx_get_dirs_arg(char **argv, int size);
+t_files *mx_get_files_arg(char **argv, int size);
+t_files *mx_get_all_arg(char **argv, int size);
+void mx_delete_files(t_files **files);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

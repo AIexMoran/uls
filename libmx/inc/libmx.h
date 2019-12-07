@@ -48,5 +48,8 @@ char *mx_strdup(const char *str);
 int mx_get_char_index(const char *str, char c);
 char *mx_strcpy(char *dst, const char *src);
 void mx_swap_char(char *s1, char *s2);
+void *mx_memmove(void *dst, const void *src, size_t len);
+void *mx_memcpy(void *restrict dst, const void *restrict src, size_t n);
+void *mx_realloc(void *ptr, size_t size);
 
 #endif

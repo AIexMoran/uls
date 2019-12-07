@@ -34,6 +34,9 @@ SRC = ./mx_strnew.c \
 	./mx_count_substr.c \
 	./mx_strdel.c \
 	./mx_del_strarr.c \
+	./mx_realloc.c \
+	./mx_memmove.c \
+	./mx_memcpy.c \
 
 SRCS = ./src/mx_strnew.c \
 	./src/mx_strlen.c \
@@ -65,6 +68,9 @@ SRCS = ./src/mx_strnew.c \
 	./src/mx_count_substr.c \
 	./src/mx_strdel.c \
 	./src/mx_del_strarr.c \
+	./src/mx_realloc.c \
+	./src/mx_memmove.c \
+	./src/mx_memcpy.c \
 
 OBJ = ./mx_strnew.o \
 	./mx_strlen.o \
@@ -96,6 +102,9 @@ OBJ = ./mx_strnew.o \
 	./mx_count_substr.o \
 	./mx_strdel.o \
 	./mx_del_strarr.o \
+	./mx_realloc.o \
+	./mx_memmove.o \
+	./mx_memcpy.o \
 
 OBJO = ./obj/mx_strnew.o \
 	./obj/mx_strlen.o \
@@ -127,6 +136,9 @@ OBJO = ./obj/mx_strnew.o \
 	./obj/mx_count_substr.o \
 	./obj/mx_strdel.o \
 	./obj/mx_del_strarr.o \
+	./obj/mx_realloc.o \
+	./obj/mx_memmove.o \
+	./obj/mx_memcpy.o \
 
 CFLGS = -g -std=c11 -Wall -Wextra -Wpedantic -Werror 
 

@@ -36,6 +36,11 @@ SRC = mx_uls.c \
 	mx_check_args.c \
 	mx_set_flags.c \
 	mx_print_files.c \
+	mx_format_dir.c \
+	mx_get_dirs_arg.c \
+	mx_get_files_arg.c \
+	mx_get_all_arg.c \
+	mx_delete_files.c \
 
 
 INCLUDE = -I $(LBMXD) \

@@ -62,6 +62,7 @@ static char get_exec_mode(int mode, int user_type) {
 
 static char get_file_type(int mode) {
     char result = '-';
+    
     if ((mode & S_IFMT) == S_IFCHR)
         return 'c';
     if ((mode & S_IFMT) == S_IFBLK)
