@@ -34,6 +34,7 @@ SRC = mx_uls.c \
 	mx_get_stime.c \
 	mx_get_inode.c \
 	mx_check_args.c \
+	mx_set_flags.c \
 
 
 INCLUDE = -I $(LBMXD) \
@@ -44,7 +45,7 @@ INCS = $(addprefix $(INCD)/, $(INC))
 SRCS = $(addprefix $(SRCD)/, $(SRC))
 OBJS = $(addprefix $(OBJD)/, $(SRC:%.c=%.o))
 	
-CFLAGS = -std=c11 -g $(addprefix -W, all extra error pedantic)
+CFLAGS = -std=c99 -g $(addprefix -W, all extra error pedantic)
 
 all: install clean
 

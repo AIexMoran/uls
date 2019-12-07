@@ -18,6 +18,17 @@
 #include <sys/errno.h>
 #include "inc/libmx.h"
 
+//flags
+#define FLAGS "-laAg" // all flags // edit mx_set_flags!!!
+
+typedef enum s_flags { // edit mx_set_flags!!!
+    a_FLAG = 1 << 0,
+    A_FLAG = 1 << 1,
+    L_FLAG = 1 << 2,
+    g_FLAG = 1 << 3
+} t_flags;
+//flags
+
 typedef struct s_file {
     char *filename; //d_name in readdir
     char *relative_path;
@@ -59,9 +70,10 @@ void mx_sort_files(t_files *files, bool (*cmp)(t_file *, t_file *));
 void mx_sort_args(int argc, int start, char **argv);
 bool mx_isflag(char *arg);
 void mx_print_error(char *error);
-void mx_check_flags(char **argv, char *flags, int argc);
+void mx_check_flags(char **argv, int argc);
 int mx_get_end_flags(char **argv, int argc);
 void mx_check_args(char **argv, int start, int argc);
+int mx_set_flags(char **argv, int end_flags);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

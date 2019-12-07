@@ -1,19 +1,19 @@
 #include "uls.h"
 
-static void print_error(char flag, char *flags);
-static bool check_arg(char *arg, char *flags);
+static void print_error(char flag);
+static bool check_arg(char *arg);
 
-void mx_check_flags(char **argv, char *flags, int argc) {
+void mx_check_flags(char **argv, int argc) {
     int end_flags = mx_get_end_flags(argv, argc);
 
     for (int i = 1; i <= end_flags; i++) {
-        if (check_arg(argv[i], flags)) {
+        if (check_arg(argv[i])) {
             exit(-1);
         }
     }
 }
 
-static bool check_arg(char *arg, char *flags) {
+static bool check_arg(char *arg) {
     bool isvalid = false;
 
     if (!mx_strcmp(arg, "--")) {
@@ -21,24 +21,24 @@ static bool check_arg(char *arg, char *flags) {
     }
     for (int i = 1; i < mx_strlen(arg); i++) {
         isvalid = false;
-        for (int j = 1; j < mx_strlen(flags); j++) {
-            if (arg[i] == flags[j]) {
+        for (int j = 1; j < mx_strlen(FLAGS); j++) {
+            if (arg[i] == FLAGS[j]) {
                 isvalid = true;
                 break;
             }
         }
         if (!isvalid) {
-            print_error(arg[i], flags);
+            print_error(arg[i]);
             return true;
         }
     }
     return false;
 }
 
-static void print_error(char flag, char *flags) {
+static void print_error(char flag) {
     mx_print_error("uls: illegal option -- ");
     write(2, &flag, 1);
-    mx_print_error("\nusage: uls [-");
-    mx_print_error(flags);
+    mx_print_error("\nusage: uls [");
+    mx_print_error(FLAGS);
     mx_print_error("] [file ...]\n");
 }
