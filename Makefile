@@ -35,6 +35,7 @@ SRC = mx_uls.c \
 	mx_get_inode.c \
 	mx_check_args.c \
 	mx_set_flags.c \
+	mx_print_files.c \
 
 
 INCLUDE = -I $(LBMXD) \

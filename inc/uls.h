@@ -61,6 +61,7 @@ typedef struct s_files { // struct for files
     struct s_files *next;
 } t_files;
 
+void mx_print_files(char **argv, int size, int flags);
 void mx_push_file(t_files **files, t_file *file);
 t_files *mx_new_file(t_file *file);
 t_file *mx_create_file(char *relative_path, char *filename);
