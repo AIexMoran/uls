@@ -28,6 +28,8 @@ static int get_flag_bit(char bit) {
             return A_FLAG;
         case 'g':
             return g_FLAG;
+        case 'f':
+            return f_FLAG;
     }
     return 0;
 }

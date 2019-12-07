@@ -19,13 +19,14 @@
 #include "inc/libmx.h"
 
 //flags
-#define FLAGS "-laAg" // all flags // edit mx_set_flags!!!
+#define FLAGS "-laAgf" // all flags // edit mx_set_flags!!!
 
 typedef enum s_flags { // edit mx_set_flags!!!
     a_FLAG = 1 << 0,
     A_FLAG = 1 << 1,
     L_FLAG = 1 << 2,
-    g_FLAG = 1 << 3
+    g_FLAG = 1 << 3,
+    f_FLAG = 1 << 4
 } t_flags;
 //flags
 
@@ -70,7 +71,7 @@ t_file *mx_create_file(char *relative_path, char *filename);
 void mx_delete_file(t_file *file);
 t_files *mx_get_files_dir(t_file *file);
 void mx_sort_files(t_files *files, bool (*cmp)(t_file *, t_file *));
-void mx_sort_args(int argc, int start, char **argv);
+void mx_sort_args(int argc, int start, char **argv, int flags);
 bool mx_isflag(char *arg);
 void mx_print_error(char *error);
 void mx_check_flags(char **argv, int argc);
