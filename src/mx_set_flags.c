@@ -1,4 +1,4 @@
-#include <uls.h>
+#include "uls.h"
 
 static void set_bit(int *flags, char *argv);
 static int get_flag_bit(char bit);
@@ -30,6 +30,8 @@ static int get_flag_bit(char bit) {
             return g_FLAG;
         case 'f':
             return f_FLAG;
+        case 'd':
+            return d_FLAG;
     }
     return 0;
 }

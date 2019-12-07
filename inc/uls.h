@@ -26,7 +26,8 @@ typedef enum s_flags { // edit mx_set_flags!!!
     A_FLAG = 1 << 1,
     L_FLAG = 1 << 2,
     g_FLAG = 1 << 3,
-    f_FLAG = 1 << 4
+    f_FLAG = 1 << 4,
+    d_FLAG = 1 << 5
 } t_flags;
 //flags
 
