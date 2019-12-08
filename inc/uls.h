@@ -78,10 +78,14 @@ typedef struct s_files { // struct for files
     struct s_files *next;
 } t_files;
 
+
+t_files *mx_get_all_dir(t_file *dir);
+void mx_print_inside_dir(t_files *dirs, int flags);
+void mx_print_files(t_files *files, int flags);
 void mx_set_name(t_files *files, int size);
 void mx_set_total(t_files *files, int flags);
 int mx_get_flag_bit(char bit);
-void mx_print_files(char **argv, int size, int flags);
+void mx_handle_files(char **argv, int size, int flags);
 void mx_push_file(t_files **files, t_file *file);
 t_files *mx_new_file(t_file *file);
 t_file *mx_create_file(char *relative_path, char *filename);

@@ -10,6 +10,7 @@
 #include <time.h>
 #include <grp.h>
 #include <stdbool.h>
+#include <malloc/malloc.h>
 
 
 typedef struct s_list {

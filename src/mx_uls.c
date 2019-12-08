@@ -14,5 +14,5 @@ static void test_main(int argc, char **argv) {
     mx_check_flags(argv, argc);
     mx_sort_args(argc, end_flags, argv, flags);
     mx_check_args(argv, end_flags, argc); // ready
-    mx_print_files(argv + end_flags + 1, argc - end_flags - 1, flags);
+    mx_handle_files(argv + end_flags + 1, argc - end_flags - 1, flags);
 }

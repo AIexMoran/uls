@@ -2,10 +2,11 @@
 
 char *mx_format_dir(char *dir) {
     int length = mx_strlen(dir);
+    char *new_str = mx_strnew(length + 1);
 
+    mx_strcpy(new_str, dir);
     if (dir[length - 1] != '/') {
-        dir = mx_realloc(dir, mx_strlen(dir) + 1);
-        dir[length] = '/';
+        new_str[length] = '/';
     }
-    return dir;
+    return new_str;
 }

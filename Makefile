@@ -35,7 +35,7 @@ SRC = mx_uls.c \
 	mx_get_inode.c \
 	mx_check_args.c \
 	mx_set_flags.c \
-	mx_print_files.c \
+	mx_handle_files.c \
 	mx_format_dir.c \
 	mx_get_dirs_arg.c \
 	mx_get_files_arg.c \
@@ -44,6 +44,9 @@ SRC = mx_uls.c \
 	mx_get_flag_bit.c \
 	mx_set_total.c \
 	mx_set_name.c \
+	mx_print_files.c \
+	mx_get_all_dir.c \
+	mx_print_inside_dir.c \
 
 
 INCLUDE = -I $(LBMXD) \
