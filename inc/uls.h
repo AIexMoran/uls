@@ -19,15 +19,18 @@
 #include "inc/libmx.h"
 
 //flags
-#define FLAGS "-laAgf" // all flags // edit mx_set_flags!!!
+#define FLAGS "-laAgfd" // all flags // edit mx_set_flags!!!
 
 typedef enum s_flags { // edit mx_set_flags!!!
     a_FLAG = 1 << 0,
     A_FLAG = 1 << 1,
-    L_FLAG = 1 << 2,
+    l_FLAG = 1 << 2,
     g_FLAG = 1 << 3,
     f_FLAG = 1 << 4,
-    d_FLAG = 1 << 5
+    d_FLAG = 1 << 5,
+    s_FLAG = 1 << 6,
+    n_FLAG = 1 << 7,
+    o_FLAG = 1 << 8
 } t_flags;
 //flags
 
@@ -65,6 +68,8 @@ typedef struct s_files { // struct for files
     struct s_files *next;
 } t_files;
 
+void mx_set_total(t_files *files, int flags);
+int mx_get_flag_bit(char bit);
 void mx_print_files(char **argv, int size, int flags);
 void mx_push_file(t_files **files, t_file *file);
 t_files *mx_new_file(t_file *file);

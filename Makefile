@@ -41,6 +41,8 @@ SRC = mx_uls.c \
 	mx_get_files_arg.c \
 	mx_get_all_arg.c \
 	mx_delete_files.c \
+	mx_get_flag_bit.c \
+	mx_set_total.c \
 
 
 INCLUDE = -I $(LBMXD) \
