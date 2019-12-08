@@ -5,6 +5,10 @@ t_files *mx_get_dirs_arg(char **argv, int size) {
     struct stat file_stat;
     t_file *dir = NULL;
 
+    if (!size) {
+        mx_push_file(&dirs, mx_create_file("./", "."));
+        return dirs;
+    }
     for (int i = 0; i < size; i++) {
         if (argv[i]) {
             lstat(argv[i], &file_stat);
@@ -14,5 +18,6 @@ t_files *mx_get_dirs_arg(char **argv, int size) {
             }
         }
     }
+    mx_set_name(dirs, size);
     return dirs;
 }

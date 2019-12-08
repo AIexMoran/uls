@@ -21,8 +21,8 @@ static bool check_arg(char *arg) {
     }
     for (int i = 1; i < mx_strlen(arg); i++) {
         isvalid = false;
-        for (int j = 1; j < mx_strlen(FLAGS); j++) {
-            if (arg[i] == FLAGS[j]) {
+        for (int j = 1; j < mx_strlen(MX_FLAGS); j++) {
+            if (arg[i] == MX_FLAGS[j]) {
                 isvalid = true;
                 break;
             }
@@ -39,6 +39,6 @@ static void print_error(char flag) {
     mx_print_error("uls: illegal option -- ");
     write(2, &flag, 1);
     mx_print_error("\nusage: uls [");
-    mx_print_error(FLAGS);
+    mx_print_error(MX_FLAGS);
     mx_print_error("] [file ...]\n");
 }

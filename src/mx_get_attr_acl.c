@@ -8,10 +8,12 @@ void mx_get_attr_acl(t_file *file) {
     file->acl_attr = mx_strdup("  ");
     xattr = listxattr(file->full_path, NULL, 0, XATTR_NOFOLLOW);
     if (xattr > 0) {
+        mx_strdel(&file->acl_attr);
         file->acl_attr = mx_strdup("@ ");
     }
     acl = acl_get_file(file->full_path, type);
     if (acl != NULL && !mx_strcmp(file->acl_attr, "  ")) {
+        mx_strdel(&file->acl_attr);
         file->acl_attr = mx_strdup("+ ");
     }
 }

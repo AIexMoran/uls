@@ -15,7 +15,7 @@ void mx_get_ctime(t_file *file, struct stat file_stat) {
              && ((time(NULL) - file->d_modf_time >= 0))) {
         file->creation_time = mx_strnew(l_str - 13);
         file->creation_time = mx_strncpy(file->creation_time,
-                str + 4, l_str - 13);
+        str + 4, l_str - 13);
         return;
     }
     get_old_time(file, str, l_str);

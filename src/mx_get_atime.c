@@ -10,7 +10,6 @@ void mx_get_atime(t_file *file, struct stat file_stat) {
     str = ctime(&file_stat.st_atime);
     l_str = mx_strlen(str);
     file->full_access_time = mx_strdup(str);
-
     if (time(NULL) - file->d_modf_time < 31556926 / 2
              && ((time(NULL) - file->d_modf_time >= 0))) {
         file->access_time = mx_strnew(l_str - 13);
