@@ -69,7 +69,7 @@ all: install clean
 install: $(LBMXS) $(NAME)
 
 $(LBMXS):
-	@cd $(LBMXD) && make -f Makefile install
+	@make -sC $(LBMXD) install
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(LBMXS) $(OBJS) -o $@
@@ -83,11 +83,11 @@ $(OBJD):
 	@mkdir -p $@
 
 uninstall: clean
-	@cd $(LBMXD) && make -f Makefile uninstall
+	@make -sC $(LBMXD) $@
 	@rm -rf $(NAME)	
 
 clean:
-	@cd $(LBMXD) && make -f Makefile clean
+	@make -sC $(LBMXD) $@
 	@rm -rf $(OBJD)
 
 reinstall: clean all
