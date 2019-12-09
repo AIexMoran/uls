@@ -55,6 +55,7 @@ typedef enum s_flags {
 //flags // edit mx_set_flags && mx_get_flag_bit!!!
 
 typedef struct s_file {
+    bool den_perms;
     char *filename; //d_name in readdir
     char *relative_path;
     char *full_path;
