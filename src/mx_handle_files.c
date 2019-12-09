@@ -9,10 +9,16 @@ void mx_handle_files(char **argv, int size, int flags) {
 
     mx_set_total(dirs, flags);
     //test
-    if (files)
-        mx_print_files(files, flags);
-    if (dirs)
-        mx_print_inside_dir(dirs, flags);
+    if (MX_F_ISDL(flags)) { // if flag 'd' print all files and dirs without contents
+        mx_print_files(all_files, flags);
+    }
+    else { // else prints files and contents of dir
+        if (files)
+            mx_print_files(files, flags);
+        mx_print_nl(files && dirs);
+        if (dirs)
+            mx_print_inside_dir(dirs, flags);
+    }
     //test
     del_all(files, dirs, all_files);
 }

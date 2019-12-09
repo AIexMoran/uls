@@ -18,10 +18,20 @@
 #include <sys/errno.h>
 #include "inc/libmx.h"
 
-//flags
-#define MX_FLAGS "-laAgfd" // all flags // edit mx_set_flags!!!
+//flags // edit mx_set_flags && mx_get_flag_bit!!!
+#define MX_FLAGS "-laAgfd" // all flags
+// lnosg - all flags that have total
+// -f - disable all sort flags
+// St - sort flags
 
-#define MX_F_ISAL(f) ((f) & (a_FLAG))
+/*
+    MX_ -> prefix
+    F -> flags
+    IS -> if
+    A or L ... -> name of flag
+    U or L -> lower or upper case flag
+*/
+#define MX_F_ISAL(f) ((f) & (a_FLAG)) // checks is flag: example MX_F_ISAU(flags)
 #define MX_F_ISAU(f) ((f) & (A_FLAG))
 #define MX_F_ISLL(f) ((f) & (l_FLAG))
 #define MX_F_ISGL(f) ((f) & (g_FLAG))
@@ -31,18 +41,18 @@
 #define MX_F_ISNL(f) ((f) & (n_FLAG))
 #define MX_F_ISOL(f) ((f) & (o_FLAG))
 
-typedef enum s_flags { // edit mx_set_flags!!!
-    a_FLAG = 1 << 0,
-    A_FLAG = 1 << 1,
-    l_FLAG = 1 << 2,
-    g_FLAG = 1 << 3,
+typedef enum s_flags {
+    a_FLAG = 1 << 0, //0b1
+    A_FLAG = 1 << 1, //0b10
+    l_FLAG = 1 << 2, //0b100
+    g_FLAG = 1 << 3, //0b1000
     f_FLAG = 1 << 4,
     d_FLAG = 1 << 5,
     s_FLAG = 1 << 6,
     n_FLAG = 1 << 7,
     o_FLAG = 1 << 8
 } t_flags;
-//flags
+//flags // edit mx_set_flags && mx_get_flag_bit!!!
 
 typedef struct s_file {
     char *filename; //d_name in readdir
@@ -72,38 +82,41 @@ typedef struct s_file {
 } t_file;
 
 typedef struct s_files { // struct for files
-    t_file *file;
-    bool istotal;
-    bool isname;
-    struct s_files *next;
+    t_file *file; // file
+    bool istotal; // print total
+    bool isname; // print name 
+    struct s_files *next; // next file
 } t_files;
 
-
-t_files *mx_get_all_dir(t_file *dir);
-void mx_print_inside_dir(t_files *dirs, int flags);
-void mx_print_files(t_files *files, int flags);
-void mx_set_name(t_files *files, int size);
-void mx_set_total(t_files *files, int flags);
-int mx_get_flag_bit(char bit);
-void mx_handle_files(char **argv, int size, int flags);
-void mx_push_file(t_files **files, t_file *file);
-t_files *mx_new_file(t_file *file);
-t_file *mx_create_file(char *relative_path, char *filename);
-void mx_delete_file(t_file *file);
-t_files *mx_get_files_dir(t_file *file);
-void mx_sort_files(t_files *files, bool (*cmp)(t_file *, t_file *));
-void mx_sort_args(int argc, int start, char **argv, int flags);
-bool mx_isflag(char *arg);
-void mx_print_error(char *error);
-void mx_check_flags(char **argv, int argc);
-int mx_get_end_flags(char **argv, int argc);
-void mx_check_args(char **argv, int start, int argc);
-int mx_set_flags(char **argv, int end_flags);
-char *mx_format_dir(char *dir);
-t_files *mx_get_dirs_arg(char **argv, int size);
-t_files *mx_get_files_arg(char **argv, int size);
-t_files *mx_get_all_arg(char **argv, int size);
-void mx_delete_files(t_files **files);
+void mx_print_name(t_files *dir); // print name of dir if isname
+void mx_extend_name(t_files *first, t_files *second); // extend name from first_dir to second_dir
+void mx_extend_total(t_files *first, t_files *second); // extend total from first_dir to second_dir
+void mx_print_total(t_files *files); // print total of dir if istotal
+t_files *mx_get_all_dir(t_file *dir); // get all files from dir
+void mx_print_inside_dir(t_files *dirs, int flags); // print all files inside dir //TODO
+void mx_print_files(t_files *files, int flags); // print files
+void mx_set_name(t_files *files, int size); // set isname
+void mx_set_total(t_files *files, int flags); // set istotal
+int mx_get_flag_bit(char bit); // get bit of flag from char ('l')
+void mx_handle_files(char **argv, int size, int flags); // main function to handle output of files
+void mx_push_file(t_files **files, t_file *file); // push file to list of files
+t_files *mx_new_file(t_file *file); // new file
+t_file *mx_create_file(char *relative_path, char *filename); // create file //TODO
+void mx_delete_file(t_file *file); // delete file // TODO
+void mx_sort_files(t_files *files, bool (*cmp)(t_file *, t_file *)); // function to sort files
+void mx_sort_args(int argc, int start, char **argv, int flags); // sort args in lexgraphic if not -f flag
+bool mx_isflag(char *arg); // check is flag arg
+void mx_print_error(char *error); // print in error output
+void mx_check_flags(char **argv, int argc);  // check flags
+int mx_get_end_flags(char **argv, int argc); // get end index of flag
+void mx_check_args(char **argv, int start, int argc); // validation of args
+int mx_set_flags(char **argv, int end_flags); // set flags in bits
+char *mx_format_dir(char *dir); // format dir to dir '/'
+t_files *mx_get_dirs_arg(char **argv, int size); // get only dirs from all args
+t_files *mx_get_files_arg(char **argv, int size); // get only files from all args
+t_files *mx_get_all_arg(char **argv, int size); // get all from all args
+void mx_delete_files(t_files **files); // delete files
+void mx_print_nl(bool isprint); // print new line if (something)
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

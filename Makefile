@@ -14,7 +14,6 @@ SRC = mx_uls.c \
 	mx_get_size.c \
 	mx_new_file.c \
 	mx_get_owner.c \
-	mx_get_files_dir.c \
 	mx_push_file.c \
 	mx_sort_files.c \
 	mx_sort_args.c \
@@ -47,6 +46,11 @@ SRC = mx_uls.c \
 	mx_print_files.c \
 	mx_get_all_dir.c \
 	mx_print_inside_dir.c \
+	mx_print_total.c \
+	mx_extend_total.c \
+	mx_print_name.c \
+	mx_print_nl.c \
+	mx_extend_name.c \
 
 
 INCLUDE = -I $(LBMXD) \

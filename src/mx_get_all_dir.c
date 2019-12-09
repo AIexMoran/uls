@@ -10,7 +10,7 @@ t_files *mx_get_all_dir(t_file *dir) {
         mx_push_file(&files,
         mx_create_file(full_path, entry->d_name));
     }
-    mx_strdel(&full_path);
     closedir(directory);
+    mx_strdel(&full_path);
     return files;
 }

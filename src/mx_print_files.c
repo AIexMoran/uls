@@ -5,5 +5,4 @@ void mx_print_files(t_files *files, int flags) { //TODO
         printf("file = %s\n", cur->file->filename);
     }
     flags++;
-    printf("\n");
 }
