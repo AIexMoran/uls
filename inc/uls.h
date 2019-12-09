@@ -18,7 +18,7 @@
 #include <sys/errno.h>
 #include "inc/libmx.h"
 
-//flags // edit mx_set_flags && mx_get_flag_bit!!!
+//flags //edit mx_get_flag_bit!!!
 #define MX_FLAGS "-laAgfd" // all flags
 // lnosg - all flags that have total
 // -f - disable all sort flags
@@ -52,7 +52,7 @@ typedef enum s_flags {
     n_FLAG = 1 << 7,
     o_FLAG = 1 << 8
 } t_flags;
-//flags // edit mx_set_flags && mx_get_flag_bit!!!
+//flags // edit mx_get_flag_bit!!!
 
 typedef struct s_file {
     bool den_perms; //if denied permissions
