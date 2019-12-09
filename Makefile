@@ -51,6 +51,7 @@ SRC = mx_uls.c \
 	mx_print_name.c \
 	mx_print_nl.c \
 	mx_extend_name.c \
+	mx_index_last_char.c \
 
 
 INCLUDE = -I $(LBMXD) \

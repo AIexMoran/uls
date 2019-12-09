@@ -55,7 +55,7 @@ typedef enum s_flags {
 //flags // edit mx_set_flags && mx_get_flag_bit!!!
 
 typedef struct s_file {
-    bool den_perms;
+    bool den_perms; //if denied permissions
     char *filename; //d_name in readdir
     char *relative_path;
     char *full_path;
@@ -89,6 +89,7 @@ typedef struct s_files { // struct for files
     struct s_files *next; // next file
 } t_files;
 
+int mx_index_last_char(char *str, char c); // get index char from end
 void mx_print_name(t_files *dir); // print name of dir if isname
 void mx_extend_name(t_files *first, t_files *second); // extend name from first_dir to second_dir
 void mx_extend_total(t_files *first, t_files *second); // extend total from first_dir to second_dir
