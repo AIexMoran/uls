@@ -95,12 +95,12 @@ void mx_extend_name(t_files *first, t_files *second); // extend name from first_
 void mx_extend_total(t_files *first, t_files *second); // extend total from first_dir to second_dir
 void mx_print_total(t_files *files); // print total of dir if istotal
 t_files *mx_get_all_dir(t_file *dir); // get all files from dir
-void mx_print_inside_dir(t_files *dirs, int flags); // print all files inside dir //TODO
+int mx_print_inside_dir(t_files *dirs, int flags); // print all files inside dir //TODO
 void mx_print_files(t_files *files, int flags); // print files
 void mx_set_name(t_files *files, int size); // set isname
 void mx_set_total(t_files *files, int flags); // set istotal
 int mx_get_flag_bit(char bit); // get bit of flag from char ('l')
-void mx_handle_files(char **argv, int size, int flags); // main function to handle output of files
+int mx_handle_files(char **argv, int size, int flags); // main function to handle output of files
 void mx_push_file(t_files **files, t_file *file); // push file to list of files
 t_files *mx_new_file(t_file *file); // new file
 t_file *mx_create_file(char *relative_path, char *filename); // create file //TODO
@@ -111,7 +111,7 @@ bool mx_isflag(char *arg); // check is flag arg
 void mx_print_error(char *error); // print in error output
 void mx_check_flags(char **argv, int argc);  // check flags
 int mx_get_end_flags(char **argv, int argc); // get end index of flag
-void mx_check_args(char **argv, int start, int argc); // validation of args
+int mx_check_args(char **argv, int start, int argc); // validation of args
 int mx_set_flags(char **argv, int end_flags); // set flags in bits
 char *mx_format_dir(char *dir); // format dir to dir '/'
 t_files *mx_get_dirs_arg(char **argv, int size); // get only dirs from all args

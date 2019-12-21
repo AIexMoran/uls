@@ -8,7 +8,7 @@ void mx_check_flags(char **argv, int argc) {
 
     for (int i = 1; i <= end_flags; i++) {
         if (check_arg(argv[i])) {
-            exit(-1);
+            exit(1);
         }
     }
 }

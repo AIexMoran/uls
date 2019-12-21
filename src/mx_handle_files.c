@@ -2,7 +2,8 @@
 
 static void del_all(t_files *files, t_files *dirs, t_files *all_files);
 
-void mx_handle_files(char **argv, int size, int flags) {
+int mx_handle_files(char **argv, int size, int flags) {
+    int retval = 0;
     t_files *files = mx_get_files_arg(argv, size); // get files from argv
     t_files *dirs = mx_get_dirs_arg(argv, size); // get dirs from argv
     t_files *all_files = mx_get_all_arg(argv, size); // get all from argv
@@ -17,10 +18,11 @@ void mx_handle_files(char **argv, int size, int flags) {
             mx_print_files(files, flags);
         mx_print_nl(files && dirs);
         if (dirs)
-            mx_print_inside_dir(dirs, flags);
+            retval = mx_print_inside_dir(dirs, flags);
     }
     //test
     del_all(files, dirs, all_files);
+    return retval;
 }
 
 static void del_all(t_files *files, t_files *dirs, t_files *all_files) {
