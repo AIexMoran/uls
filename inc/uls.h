@@ -16,14 +16,16 @@
 #include <pwd.h>
 #include <string.h>
 #include <sys/errno.h>
+#include <limits.h>
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-laAgfdo" // all flags
+#define MX_FLAGS "-lgo1CxG" // all flags
+#define MX_OUTPUT_FLAGS ~0xF
 // lnosg - all flags that have total
 // f - disable all sort flags
 // rtucS - sort flags
-// lg1Co - output flags // lgo - group name
+// lg1Cox - output flags // lgo - group name
 // heT - combine-flags
 
 /*
@@ -31,29 +33,43 @@
     F -> flags
     IS -> if
     A or L ... -> name of flag
-    U or L -> lower or upper case flag
+    U or L or N -> lower or upper case flag or number
 */
 #define MX_F_LONG(f) (((f) & (l_FLAG)) || ((f) & (g_FLAG)) || ((f) & (o_FLAG)))
+
+#define MX_F_ISLL(f) ((f) & (l_FLAG)) // output flags
+#define MX_F_ISGL(f) ((f) & (g_FLAG))
+#define MX_F_ISOL(f) ((f) & (o_FLAG))
+#define MX_F_ISCU(f) ((f) & (C_FLAG))
+#define MX_F_IS1N(f) ((f) & (N1_FLAG))
+#define MX_F_ISXL(f) ((f) & (x_FLAG)) // output flags
+#define MX_F_ISHL(f) ((f) & (h_FLAG)) // combine flags
+#define MX_F_ISTU(f) ((f) & (T_FLAG)) // combine flags
 #define MX_F_ISAL(f) ((f) & (a_FLAG)) // checks is flag: example MX_F_ISAU(flags)
 #define MX_F_ISAU(f) ((f) & (A_FLAG))
-#define MX_F_ISLL(f) ((f) & (l_FLAG))
-#define MX_F_ISGL(f) ((f) & (g_FLAG))
 #define MX_F_ISFL(f) ((f) & (f_FLAG))
 #define MX_F_ISDL(f) ((f) & (d_FLAG))
 #define MX_F_ISSL(f) ((f) & (s_FLAG))
 #define MX_F_ISNL(f) ((f) & (n_FLAG))
-#define MX_F_ISOL(f) ((f) & (o_FLAG))
+#define MX_F_ISGU(f) ((f) & (G_FLAG))
 
 typedef enum s_flags {
-    a_FLAG = 1 << 0, //0b1
-    A_FLAG = 1 << 1, //0b10
-    l_FLAG = 1 << 2, //0b100
-    g_FLAG = 1 << 3, //0b1000
-    f_FLAG = 1 << 4,
-    d_FLAG = 1 << 5,
-    s_FLAG = 1 << 6,
-    n_FLAG = 1 << 7,
-    o_FLAG = 1 << 8
+    l_FLAG = 1 << 0, // output flags
+    N1_FLAG = 1 << 1,
+    x_FLAG = 1 << 2,
+    C_FLAG = 1 << 3,
+    o_FLAG = 1 << 4,
+    g_FLAG = 1 << 5, //output flags
+    h_FLAG = 1 << 6, //combine flags
+    T_FLAG = 1 << 7, // combine flags
+    e_FLAG = 1 << 8,
+    A_FLAG = 1 << 9,
+    a_FLAG = 1 << 10,
+    d_FLAG = 1 << 11,
+    f_FLAG = 1 << 12,
+    s_FLAG = 1 << 13,
+    n_FLAG = 1 << 14,
+    G_FLAG = 1 << 15
 } t_flags;
 //flags // edit mx_get_flag_bit!!!
 
@@ -104,6 +120,7 @@ typedef struct s_file {
 
 typedef struct s_files { // struct for files
     t_file *file; // file
+    t_len_file *len_file;
     bool istotal; // print total
     bool isname; // print name 
     struct s_files *next; // next file
@@ -117,7 +134,7 @@ void mx_print_owner(t_file *file, int flags);
 void mx_print_links(t_file *file);
 void mx_print_perms(t_file *file);
 t_len_file *mx_get_length_file(t_files *_files);
-void mx_print_long_format(t_file *file, int flags);
+void mx_print_long_format(t_files *files, int flags);
 int mx_index_last_char(char *str, char c); // get index char from end
 void mx_print_name(t_files *dir); // print name of dir if isname
 void mx_extend_name(t_files *first, t_files *second); // extend name from first_dir to second_dir
@@ -148,6 +165,14 @@ t_files *mx_get_files_arg(char **argv, int size); // get only files from all arg
 t_files *mx_get_all_arg(char **argv, int size); // get all from all args
 void mx_delete_files(t_files **files); // delete files
 void mx_print_nl(bool isprint); // print new line if (something)
+int mx_get_output_bit(char bit);
+int mx_get_combine_bit(char bit);
+void mx_print_1_format(t_files *files, int flags);
+void mx_print_col_format(t_files *files, int flags, int size);
+void mx_print_xcol_format(t_files *files, int flags, int size);
+int mx_files_size(t_files *files);
+void mx_print_perm_error(char *filename);
+
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

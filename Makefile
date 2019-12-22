@@ -61,6 +61,11 @@ SRC = mx_uls.c \
 	mx_print_size.c \
 	mx_print_time.c \
 	mx_print_filename.c \
+	mx_print_1_format.c \
+	mx_print_col_format.c \
+	mx_print_xcol_format.c \
+	mx_files_size.c \
+	mx_print_perm_error.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \
@@ -70,7 +75,7 @@ INCS = $(addprefix $(INCD)/, $(INC))
 SRCS = $(addprefix $(SRCD)/, $(SRC))
 OBJS = $(addprefix $(OBJD)/, $(SRC:%.c=%.o))
 	
-CFLAGS = -std=c99 -g $(addprefix -W, all extra error pedantic)
+CFLAGS = -std=c99 $(addprefix -W, all extra error pedantic)
 
 all: install clean
 

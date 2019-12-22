@@ -1,32 +1,26 @@
 #include "uls.h"
 
-static void print_error(char *filename);
-static void print_format(t_file *file, int flags);
+static void print_format(t_files *files, int flags, int size);
 
 void mx_print_files(t_files *files, int flags) { //TODO
-    t_len_file *len_file = mx_get_length_file(files);
+    int size = mx_files_size(files);
 
-    for (t_files *cur = files; cur; cur = cur->next) {
-        if (cur->file->den_perms) { // checks if file has perms denied
-            print_error(cur->file->filename);
-            continue;
-        }
-        cur->file->len_file = len_file;
-        print_format(cur->file, flags);
-    }
-    flags++;
+    files->len_file = mx_get_length_file(files);
+    print_format(files, flags, size);
+    free(files->len_file);
 }
 
-static void print_format(t_file *file, int flags) {
-    if (MX_F_LONG(flags)) {
-        mx_print_long_format(file, flags);
+static void print_format(t_files *files, int flags, int size) {
+    if (MX_F_ISCU(flags)) {
+        mx_print_col_format(files, flags, size);
     }
-}
-
-static void print_error(char *filename) {
-    int index_filename = mx_index_last_char(filename, '/');
-
-    mx_print_error("uls: ");
-    mx_print_error(filename + index_filename);
-    mx_print_error(": Permission denied\n");
+    else if (MX_F_IS1N(flags)) {
+        mx_print_1_format(files, flags);
+    }
+    else if (MX_F_ISXL(flags)) {
+        mx_print_xcol_format(files, flags, size);
+    }
+    else if (MX_F_LONG(flags)) {
+        mx_print_long_format(files, flags);
+    }
 }
