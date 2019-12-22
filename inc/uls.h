@@ -19,10 +19,12 @@
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-laAgfd" // all flags
+#define MX_FLAGS "-laAgfdo" // all flags
 // lnosg - all flags that have total
-// -f - disable all sort flags
-// St - sort flags
+// f - disable all sort flags
+// rtucS - sort flags
+// lg1Co - output flags // lgo - group name
+// heT - combine-flags
 
 /*
     MX_ -> prefix
@@ -31,6 +33,7 @@
     A or L ... -> name of flag
     U or L -> lower or upper case flag
 */
+#define MX_F_LONG(f) (((f) & (l_FLAG)) || ((f) & (g_FLAG)) || ((f) & (o_FLAG)))
 #define MX_F_ISAL(f) ((f) & (a_FLAG)) // checks is flag: example MX_F_ISAU(flags)
 #define MX_F_ISAU(f) ((f) & (A_FLAG))
 #define MX_F_ISLL(f) ((f) & (l_FLAG))
@@ -54,7 +57,22 @@ typedef enum s_flags {
 } t_flags;
 //flags // edit mx_get_flag_bit!!!
 
+typedef struct s_len_file {
+    int filename_l;
+    int path_l;
+    int size_l;
+    int owner_l; 
+    int modf_time_l; 
+    int perms_l; 
+    int links_l; 
+    int group_l;  
+    int blksize_l;
+    int blocks_l;
+    int acl_attr_l;
+} t_len_file;
+
 typedef struct s_file {
+    t_len_file *len_file;
     bool den_perms; //if denied permissions
     char *filename; //d_name in readdir
     char *relative_path;
@@ -82,6 +100,8 @@ typedef struct s_file {
     char *full_status_time;
 } t_file;
 
+
+
 typedef struct s_files { // struct for files
     t_file *file; // file
     bool istotal; // print total
@@ -89,6 +109,15 @@ typedef struct s_files { // struct for files
     struct s_files *next; // next file
 } t_files;
 
+void mx_print_filename(t_file *file, int flags);
+void mx_print_time(t_file *file, int flags); //TODO combintaion
+void mx_print_size(t_file *file, int flags); //TODO combination
+void mx_print_group(t_file *file, int flags);
+void mx_print_owner(t_file *file, int flags);
+void mx_print_links(t_file *file);
+void mx_print_perms(t_file *file);
+t_len_file *mx_get_length_file(t_files *_files);
+void mx_print_long_format(t_file *file, int flags);
 int mx_index_last_char(char *str, char c); // get index char from end
 void mx_print_name(t_files *dir); // print name of dir if isname
 void mx_extend_name(t_files *first, t_files *second); // extend name from first_dir to second_dir

@@ -8,11 +8,11 @@ int mx_print_inside_dir(t_files *dirs, int flags) { //TODO
         mx_extend_name(cur, dirs);
         mx_print_name(cur);
         files = mx_get_all_dir(cur->file);
-        if (files->file->den_perms)
-            retval = 1;
         mx_extend_total(files, dirs);
         mx_print_total(files);
         mx_print_files(files, flags);
+        if (files->file->den_perms)
+            retval = 1;
         mx_delete_files(&files);
         mx_print_nl(cur->next != NULL);
     }

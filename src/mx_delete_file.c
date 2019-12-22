@@ -9,7 +9,7 @@ void mx_delete_file(t_file *file) {
     mx_strdel(&file->owner);
     mx_strdel(&file->perms);
     mx_strdel(&file->group);
-    // mx_strdel(&file->acl_attr); //ERROR
+    mx_strdel(&file->acl_attr);
     delete_time(file);
     free(file);
     file = NULL;

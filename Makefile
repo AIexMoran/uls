@@ -52,7 +52,15 @@ SRC = mx_uls.c \
 	mx_print_nl.c \
 	mx_extend_name.c \
 	mx_index_last_char.c \
-
+	mx_get_length_file.c \
+	mx_print_long_format.c \
+	mx_print_perms.c \
+	mx_print_links.c \
+	mx_print_owner.c \
+	mx_print_group.c \
+	mx_print_size.c \
+	mx_print_time.c \
+	mx_print_filename.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \
