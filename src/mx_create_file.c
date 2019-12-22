@@ -27,4 +27,5 @@ static void get_attributes(t_file *new_file, struct stat file_stat) {
     mx_get_blocks_count(new_file, file_stat);
     mx_get_ctime(new_file, file_stat);
     mx_get_atime(new_file, file_stat);
+    mx_get_minmaj(new_file, file_stat);
 }

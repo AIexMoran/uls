@@ -66,6 +66,9 @@ SRC = mx_uls.c \
 	mx_print_xcol_format.c \
 	mx_files_size.c \
 	mx_print_perm_error.c \
+	mx_is_spec_file.c \
+	mx_get_minmaj.c \
+	mx_islink.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

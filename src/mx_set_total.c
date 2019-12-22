@@ -10,5 +10,7 @@ void mx_set_total(t_files *files, int flags) {
         || MX_F_ISOL(flags)
         || MX_F_ISSL(flags)) {
         files->istotal = true;
+        return;
     }
+    files->istotal = false;
 }

@@ -22,6 +22,7 @@
 //flags //edit mx_get_flag_bit!!!
 #define MX_FLAGS "-lgo1CxG" // all flags
 #define MX_OUTPUT_FLAGS ~0xF
+#define MX_SIZE_TERM 80
 // lnosg - all flags that have total
 // f - disable all sort flags
 // rtucS - sort flags
@@ -36,6 +37,8 @@
     U or L or N -> lower or upper case flag or number
 */
 #define MX_F_LONG(f) (((f) & (l_FLAG)) || ((f) & (g_FLAG)) || ((f) & (o_FLAG)))
+#define MX_MINOR(x) ((x) & 0xFF)
+#define MX_MAJOR(x) (((x) >> 24) & 0xFF)
 
 #define MX_F_ISLL(f) ((f) & (l_FLAG)) // output flags
 #define MX_F_ISGL(f) ((f) & (g_FLAG))
@@ -114,6 +117,8 @@ typedef struct s_file {
     char *full_creation_time;
     char *full_access_time;
     char *full_status_time;
+    int major_num;
+    int minor_num;
 } t_file;
 
 
@@ -172,7 +177,9 @@ void mx_print_col_format(t_files *files, int flags, int size);
 void mx_print_xcol_format(t_files *files, int flags, int size);
 int mx_files_size(t_files *files);
 void mx_print_perm_error(char *filename);
-
+bool mx_is_spec_file(t_file *file);
+void mx_get_minmaj(t_file *new_file, struct stat file_stat);
+bool mx_islink(t_file *file);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

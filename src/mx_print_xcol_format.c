@@ -37,6 +37,8 @@ static int get_files_line(int len_filename) {
     struct winsize w;
 
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    if (!w.ws_col)
+        return MX_SIZE_TERM / len_filename;
     return w.ws_col / len_filename;
 }
 
