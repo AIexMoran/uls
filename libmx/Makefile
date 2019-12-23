@@ -38,6 +38,7 @@ SRC = mx_strnew.c \
 	mx_realloc.c \
 	mx_memmove.c \
 	mx_memcpy.c \
+	mx_pr_num_to_hex.c \
 
 INCLUDE = -I $(INCD) \
 

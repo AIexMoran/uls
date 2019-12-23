@@ -26,6 +26,7 @@ void mx_push_back(t_list **list, void *data);
 void mx_pop_front(t_list **head);
 void mx_pop_back(t_list **head);
 
+char *mx_pr_num_to_hex(unsigned long num);
 void mx_del_strarr(char ***strs);
 void mx_strdel(char **str);
 int mx_count_substr(const char *str, const char *sub);

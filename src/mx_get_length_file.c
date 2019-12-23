@@ -42,7 +42,7 @@ static t_len_file *get_length_values(t_len_file *l_f, t_files *files) {
 
 static int get_l_size(t_len_file *l_f, t_file *file) {
     if (mx_is_spec_file(file)) {
-        return get_l_dec(l_f->size_l, 10000000);
+        return l_f->size_l > 8 ? l_f->size_l : 8;
     }
     return get_l_dec(l_f->size_l, file->size);
 }

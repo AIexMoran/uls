@@ -37,7 +37,7 @@
     U or L or N -> lower or upper case flag or number
 */
 #define MX_F_LONG(f) (((f) & (l_FLAG)) || ((f) & (g_FLAG)) || ((f) & (o_FLAG)))
-#define MX_MINOR(x) ((x) & 0xFF)
+#define MX_MINOR(x) ((x) & 0xFFFFFF)
 #define MX_MAJOR(x) (((x) >> 24) & 0xFF)
 
 #define MX_F_ISLL(f) ((f) & (l_FLAG)) // output flags
