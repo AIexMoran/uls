@@ -56,6 +56,17 @@
 #define MX_F_ISNL(f) ((f) & (n_FLAG))
 #define MX_F_ISGU(f) ((f) & (G_FLAG))
 
+#define MX_SET_COLOR "\x1b"
+#define MX_CLEAR_COLOR "[0m"
+#define MX_BLACK '0'
+#define MX_RED '1'
+#define MX_GREEN '2'
+#define MX_BROWN '3'
+#define MX_BLUE '4'
+#define MX_MAGENTA '5'
+#define MX_CYAN '6'
+#define MX_LGRAY '7'
+
 typedef enum s_flags {
     l_FLAG = 1 << 0, // output flags
     N1_FLAG = 1 << 1,
@@ -74,6 +85,7 @@ typedef enum s_flags {
     n_FLAG = 1 << 14,
     G_FLAG = 1 << 15
 } t_flags;
+
 //flags // edit mx_get_flag_bit!!!
 
 typedef struct s_len_file {
@@ -180,6 +192,8 @@ void mx_print_perm_error(char *filename);
 bool mx_is_spec_file(t_file *file);
 void mx_get_minmaj(t_file *new_file, struct stat file_stat);
 bool mx_islink(t_file *file);
+void mx_enable_color(char *perms);
+void mx_disable_color();
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

@@ -69,6 +69,8 @@ SRC = mx_uls.c \
 	mx_is_spec_file.c \
 	mx_get_minmaj.c \
 	mx_islink.c \
+	mx_enable_color.c \
+	mx_disable_color.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

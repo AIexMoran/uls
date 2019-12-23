@@ -3,11 +3,12 @@
 static void print_link(t_file *file, int flags);
 
 void mx_print_filename(t_file *file, int flags) { //TODO 
-    mx_printstr(file->filename);
-    
+    mx_enable_color(file->perms);
+    mx_printstr(file->filename);    
     if (mx_islink(file)) {
         print_link(file, flags);
     }
+    mx_disable_color(file->perms);
 }
 
 static void print_link(t_file *file, int flags) { 
