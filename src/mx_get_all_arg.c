@@ -10,7 +10,7 @@ t_files *mx_get_all_arg(char **argv, int size) {
     }
     for (int i = 0; i < size; i++) {
         if (argv[i]) {
-            file = mx_create_file("./", argv[i]);
+            file = mx_create_file("", argv[i]);
             mx_push_file(&files, file);
         }
     }

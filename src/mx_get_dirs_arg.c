@@ -13,7 +13,7 @@ t_files *mx_get_dirs_arg(char **argv, int size) {
         if (argv[i]) {
             lstat(argv[i], &file_stat);
             if ((file_stat.st_mode & S_IFMT) == S_IFDIR) {
-                dir = mx_create_file("./", argv[i]);
+                dir = mx_create_file("", argv[i]);
                 mx_push_file(&dirs, dir);
             }
         }
