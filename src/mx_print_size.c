@@ -19,6 +19,7 @@ static void print_spec(t_file *file) {
     char *minor_str = mx_itoa(file->minor_num);
     char *major_str = mx_itoa(file->major_num);
 
+    mx_printspaces(file->len_file->size_l - 8);
     mx_printspaces(3 - major_l);
     mx_printstr(major_str);
     mx_printstr(", ");

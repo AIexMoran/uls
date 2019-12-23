@@ -3,6 +3,7 @@
 static t_len_file *get_length_values(t_len_file *l_f, t_files *files);
 static int get_l_str(int len, char *str);
 static int get_l_dec(int len, size_t size);
+static int get_l_size(t_len_file *l_f, t_file *file);
 
 t_len_file *mx_get_length_file(t_files *files) {
     t_len_file *l_f = malloc(sizeof(t_len_file));
@@ -27,7 +28,7 @@ static t_len_file *get_length_values(t_len_file *l_f, t_files *files) {
         c_f = cur->file;
         l_f->filename_l = get_l_str(l_f->filename_l, c_f->filename);
         l_f->path_l = get_l_str(l_f->path_l, c_f->relative_path);
-        l_f->size_l = get_l_dec(l_f->size_l, c_f->size);
+        l_f->size_l = get_l_size(l_f, c_f);
         l_f->owner_l = get_l_str(l_f->owner_l, c_f->owner);
         l_f->modf_time_l = get_l_str(l_f->modf_time_l, c_f->modf_time);
         l_f->perms_l = get_l_str(l_f->perms_l, c_f->perms);
@@ -37,6 +38,13 @@ static t_len_file *get_length_values(t_len_file *l_f, t_files *files) {
         l_f->blocks_l = get_l_dec(l_f->group_l, c_f->blocks);
     }
     return l_f;
+}
+
+static int get_l_size(t_len_file *l_f, t_file *file) {
+    if (mx_is_spec_file(file)) {
+        return get_l_dec(l_f->size_l, 10000000);
+    }
+    return get_l_dec(l_f->size_l, file->size);
 }
 
 static int get_l_dec(int len, size_t size) {
