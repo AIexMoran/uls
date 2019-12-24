@@ -5,10 +5,10 @@ static void set_bits_color(char *perms);
 static void set_type_color(char *perms);
 static bool is_executeble(char *perms);
 
-//exfxcxdxbxegedabagacad
-//ex fx cx dx bx eg ed ab ag ac ad
-//Gx fx cx dx bx eg ed ab ag ac ad
-void mx_enable_color(char *perms) {
+void mx_enable_color(char *perms, int flags) {
+    if (!MX_F_ISGU(flags)) {
+        return;
+    }
     set_type_color(perms);
     set_bits_color(perms);
 }
@@ -72,27 +72,3 @@ static void set_type_color(char *perms) {
 static bool is_executeble(char *perms) {
     return perms[3] == 'x' || perms[6] == 'x' || perms[9] == 'x';
 }
-
-
-//ex fx cx dx bx eg ed ab ag ac ad
-                           // a     black
-                           // b     red
-                           // c     green
-                           // d     brown
-                           // e     blue
-                           // f     magenta
-                           // g     cyan
-                           // h     light grey
-                           // x     default foreground or background
-
-                           // 1.   directory
-                           // 2.   symbolic link
-                           // 3.   socket
-                           // 4.   pipe
-                           // 5.   executable
-                           // 6.   block special
-                           // 7.   character special
-                           // 8.   executable with setuid bit set
-                           // 9.   executable with setgid bit set
-                           // 10.  directory writable to others, with sticky bit
-                           // 11.  directory writable to others, without sticky bit

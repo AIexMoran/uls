@@ -5,12 +5,14 @@ static void set_output_bit(int *flags, char *argv);
 
 int mx_set_flags(char **argv, int end_flags) {
     int flags = 0;
+    bool is_atty = isatty(1);
 
-    flags |= isatty(1) ? C_FLAG : N1_FLAG;
+    flags |= is_atty ? C_FLAG : N1_FLAG;
     for (int i = 1; i <= end_flags; i++) {
         set_output_bit(&flags, argv[i]);
         set_bit(&flags, argv[i]);
-    } 
+    }
+    flags &= is_atty ? flags : ~G_FLAG;
     return flags;   
 }
 

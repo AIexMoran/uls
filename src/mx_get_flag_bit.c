@@ -5,12 +5,14 @@ int mx_get_flag_bit(char bit) {
         return h_FLAG;
     if (bit == 'T')
         return T_FLAG;
-    if (bit == 'a')
-        return a_FLAG;
     if (bit == 'A')
         return A_FLAG;
+    if (bit == 'a')
+        return a_FLAG;
     if (bit == 'G')
         return G_FLAG;
+    if (bit == 'f')
+        return f_FLAG;
     return 0;
 }
 

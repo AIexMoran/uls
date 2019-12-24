@@ -9,6 +9,5 @@ void mx_delete_files(t_files **files) {
         tmp = cur;
         cur = cur->next;
         free(tmp);
-        tmp = NULL;
     }
 }

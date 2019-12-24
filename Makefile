@@ -71,6 +71,9 @@ SRC = mx_uls.c \
 	mx_islink.c \
 	mx_enable_color.c \
 	mx_disable_color.c \
+	mx_std_filter.c \
+	mx_A_filter.c \
+	mx_al_filter.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

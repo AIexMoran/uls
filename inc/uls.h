@@ -20,7 +20,7 @@
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-lgo1CxG" // all flags
+#define MX_FLAGS "-lgo1CxGAaf" // all flags
 #define MX_OUTPUT_FLAGS ~0xF
 #define MX_SIZE_TERM 80
 // lnosg - all flags that have total
@@ -48,8 +48,8 @@
 #define MX_F_ISXL(f) ((f) & (x_FLAG)) // output flags
 #define MX_F_ISHL(f) ((f) & (h_FLAG)) // combine flags
 #define MX_F_ISTU(f) ((f) & (T_FLAG)) // combine flags
-#define MX_F_ISAL(f) ((f) & (a_FLAG)) // checks is flag: example MX_F_ISAU(flags)
-#define MX_F_ISAU(f) ((f) & (A_FLAG))
+#define MX_F_ISAL(f) ((f) & (a_FLAG))// filter flags
+#define MX_F_ISAU(f) ((f) & (A_FLAG))// filter flags
 #define MX_F_ISFL(f) ((f) & (f_FLAG))
 #define MX_F_ISDL(f) ((f) & (d_FLAG))
 #define MX_F_ISSL(f) ((f) & (s_FLAG))
@@ -75,10 +75,10 @@ typedef enum s_flags {
     o_FLAG = 1 << 4,
     g_FLAG = 1 << 5, //output flags
     h_FLAG = 1 << 6, //combine flags
-    T_FLAG = 1 << 7, // combine flags
-    e_FLAG = 1 << 8,
-    A_FLAG = 1 << 9,
-    a_FLAG = 1 << 10,
+    T_FLAG = 1 << 7, //combine flags
+    a_FLAG = 1 << 8, //filter flags
+    A_FLAG = 1 << 9, //filter flags
+    e_FLAG = 1 << 10,
     d_FLAG = 1 << 11,
     f_FLAG = 1 << 12,
     s_FLAG = 1 << 13,
@@ -192,8 +192,11 @@ void mx_print_perm_error(char *filename);
 bool mx_is_spec_file(t_file *file);
 void mx_get_minmaj(t_file *new_file, struct stat file_stat);
 bool mx_islink(t_file *file);
-void mx_enable_color(char *perms);
-void mx_disable_color();
+void mx_enable_color(char *perms, int flags);
+void mx_disable_color(int flags);
+t_files *mx_std_filter(t_files *files);
+t_files *mx_A_filter(t_files *files);
+t_files *mx_al_filter(t_files *files);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
