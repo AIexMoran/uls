@@ -1,10 +1,6 @@
 #include "uls.h"
 
 int mx_get_flag_bit(char bit) {
-    if (bit == 'h')
-        return h_FLAG;
-    if (bit == 'T')
-        return T_FLAG;
     if (bit == 'A')
         return A_FLAG;
     if (bit == 'a')

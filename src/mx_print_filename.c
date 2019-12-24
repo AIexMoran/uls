@@ -15,8 +15,9 @@ static void print_link(t_file *file, int flags) {
     char link[1024];
     int bytes_read = 0;
 
-    flags++;
-
+    if (!MX_F_LONG(flags)) {
+        return;
+    }
     if (mx_islink(file)) {
         bytes_read = readlink(file->full_path, link, sizeof(link) - 1);
         link[bytes_read] = '\0';
