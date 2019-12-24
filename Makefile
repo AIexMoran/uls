@@ -74,6 +74,9 @@ SRC = mx_uls.c \
 	mx_std_filter.c \
 	mx_A_filter.c \
 	mx_al_filter.c \
+	mx_std_cmp.c \
+	mx_modf_time_cmp.c \
+	mx_size_cmp.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

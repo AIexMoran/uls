@@ -20,12 +20,12 @@
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-lgo1CxGAaf" // all flags
+#define MX_FLAGS "-lgo1CxGAafS" // all flags
 #define MX_OUTPUT_FLAGS ~0xF
 #define MX_SIZE_TERM 80
 // lnosg - all flags that have total
 // f - disable all sort flags
-// rtucS - sort flags
+// St - sort flags
 // lg1Cox - output flags // lgo - group name
 // heT - combine-flags
 
@@ -50,11 +50,13 @@
 #define MX_F_ISTU(f) ((f) & (T_FLAG)) // combine flags
 #define MX_F_ISAL(f) ((f) & (a_FLAG))// filter flags
 #define MX_F_ISAU(f) ((f) & (A_FLAG))// filter flags
+#define MX_F_ISSU(f) ((f) & (S_FLAG)) // sort flags
+#define MX_F_ISSL(f) ((f) & (s_FLAG))
 #define MX_F_ISFL(f) ((f) & (f_FLAG))
 #define MX_F_ISDL(f) ((f) & (d_FLAG))
-#define MX_F_ISSL(f) ((f) & (s_FLAG))
 #define MX_F_ISNL(f) ((f) & (n_FLAG))
 #define MX_F_ISGU(f) ((f) & (G_FLAG))
+#define MX_F_ISTL(f) ((f) & (t_FLAG))
 
 #define MX_SET_COLOR "\x1b"
 #define MX_CLEAR_COLOR "[0m"
@@ -78,12 +80,13 @@ typedef enum s_flags {
     T_FLAG = 1 << 7, //combine flags
     a_FLAG = 1 << 8, //filter flags
     A_FLAG = 1 << 9, //filter flags
-    e_FLAG = 1 << 10,
-    d_FLAG = 1 << 11,
+    t_FLAG = 1 << 10, //sort flags
+    S_FLAG = 1 << 11, //sort flags
     f_FLAG = 1 << 12,
-    s_FLAG = 1 << 13,
+    d_FLAG = 1 << 13,
     n_FLAG = 1 << 14,
-    G_FLAG = 1 << 15
+    G_FLAG = 1 << 15,
+    s_FLAG = 1 << 16
 } t_flags;
 
 //flags // edit mx_get_flag_bit!!!
@@ -117,10 +120,10 @@ typedef struct s_file {
     blksize_t blksize; //-k? flag
     blkcnt_t blocks; //-s flag
     char *acl_attr; //ACL -- TODO
-    long d_modf_time;
     char *creation_time; //-U flag //added function //SANYA
     char *access_time; //-u flag //added func //SANYA
     char *status_time; //-c flag //added func //SANYA
+    long d_modf_time;
     long d_creation_time; //for sorting
     long d_access_time; //for sorting
     long d_status_time; //for sorting
@@ -197,6 +200,9 @@ void mx_disable_color(int flags);
 t_files *mx_std_filter(t_files *files);
 t_files *mx_A_filter(t_files *files);
 t_files *mx_al_filter(t_files *files);
+bool mx_std_cmp(t_file *f_file, t_file *s_file);
+bool mx_modf_time_cmp(t_file *f_file, t_file *s_file);
+bool mx_size_cmp(t_file *f_file, t_file *s_file);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

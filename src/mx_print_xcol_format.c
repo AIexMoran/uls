@@ -26,7 +26,7 @@ static void print(t_file *files_arr[], int flags, int size, int files_line) {
     for (int i = 0; i < size; i++) {
         mx_print_filename(files_arr[i], flags);
         len_str = mx_strlen(files_arr[i]->filename);
-        if ((i + 1) % files_line)
+        if ((i + 1) % files_line && i + 1 < size)
             mx_printspaces(files_arr[0]->len_file->filename_l - len_str);
         if ((i + 1) % files_line == 0 || (i + 1) == size)
             mx_printstr("\n");

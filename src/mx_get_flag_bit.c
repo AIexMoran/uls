@@ -9,6 +9,10 @@ int mx_get_flag_bit(char bit) {
         return G_FLAG;
     if (bit == 'f')
         return f_FLAG;
+    if (bit == 't')
+        return t_FLAG;
+    if (bit == 'S')
+        return S_FLAG;
     return 0;
 }
 
