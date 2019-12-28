@@ -14,5 +14,7 @@ t_files *mx_get_files_arg(char **argv, int size) {
             }
         }
     }
+    if (files)
+        files->istotal = false;
     return files;
 }

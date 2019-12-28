@@ -9,8 +9,8 @@ int mx_handle_files(char **argv, int size, int flags) {
     t_files *all_files = mx_get_all_arg(argv, size); // get all from argv
 
     mx_set_total(dirs, flags); // set total to dirs
-    //test
     if (MX_F_ISDL(flags)) { // if flag 'd' print all files and dirs without contents
+        flags |= a_FLAG;
         mx_print_files(all_files, flags); // print all files
     }
     else { // else prints files and contents of dir
@@ -20,7 +20,6 @@ int mx_handle_files(char **argv, int size, int flags) {
         if (dirs)
             retval = mx_print_inside_dir(dirs, flags);
     }
-    //test
     del_all(files, dirs, all_files);
     return retval;
 }

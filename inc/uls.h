@@ -20,8 +20,9 @@
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-lgo1CxGAafS" // all flags
+#define MX_FLAGS "-lgo1CxGAafSdTuUc" // all flags
 #define MX_OUTPUT_FLAGS ~0xF
+#define MX_COMBINE_FLAGS ~0x380
 #define MX_SIZE_TERM 80
 // lnosg - all flags that have total
 // f - disable all sort flags
@@ -47,7 +48,10 @@
 #define MX_F_IS1N(f) ((f) & (N1_FLAG))
 #define MX_F_ISXL(f) ((f) & (x_FLAG)) // output flags
 #define MX_F_ISHL(f) ((f) & (h_FLAG)) // combine flags
-#define MX_F_ISTU(f) ((f) & (T_FLAG)) // combine flags
+#define MX_F_ISTU(f) ((f) & (T_FLAG)) 
+#define MX_F_ISUL(f) ((f) & (u_FLAG))
+#define MX_F_ISCL(f) ((f) & (c_FLAG))
+#define MX_F_ISUU(f) ((f) & (U_FLAG)) // combine flags
 #define MX_F_ISAL(f) ((f) & (a_FLAG))// filter flags
 #define MX_F_ISAU(f) ((f) & (A_FLAG))// filter flags
 #define MX_F_ISSU(f) ((f) & (S_FLAG)) // sort flags
@@ -76,17 +80,20 @@ typedef enum s_flags {
     C_FLAG = 1 << 3,
     o_FLAG = 1 << 4,
     g_FLAG = 1 << 5, //output flags
-    h_FLAG = 1 << 6, //combine flags
-    T_FLAG = 1 << 7, //combine flags
-    a_FLAG = 1 << 8, //filter flags
-    A_FLAG = 1 << 9, //filter flags
+    T_FLAG = 1 << 6, //combine flags
+    u_FLAG = 1 << 7,
+    U_FLAG = 1 << 8, 
+    c_FLAG = 1 << 9, //combine flags
     t_FLAG = 1 << 10, //sort flags
     S_FLAG = 1 << 11, //sort flags
     f_FLAG = 1 << 12,
     d_FLAG = 1 << 13,
     n_FLAG = 1 << 14,
     G_FLAG = 1 << 15,
-    s_FLAG = 1 << 16
+    s_FLAG = 1 << 16,
+    h_FLAG = 1 << 17,
+    a_FLAG = 1 << 18,
+    A_FLAG = 1 << 19
 } t_flags;
 
 //flags // edit mx_get_flag_bit!!!
@@ -148,7 +155,7 @@ typedef struct s_files { // struct for files
 
 void mx_print_filename(t_file *file, int flags);
 void mx_print_time(t_file *file, int flags); //TODO combintaion
-void mx_print_size(t_file *file, int flags); //TODO combination
+void mx_print_size(t_file *file); //TODO combination
 void mx_print_group(t_file *file, int flags);
 void mx_print_owner(t_file *file, int flags);
 void mx_print_links(t_file *file);

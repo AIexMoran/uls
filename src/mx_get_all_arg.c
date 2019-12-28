@@ -6,6 +6,7 @@ t_files *mx_get_all_arg(char **argv, int size) {
 
     if (!size) {
         mx_push_file(&files, mx_create_file("./", "."));
+        files->istotal = false;
         return files;
     }
     for (int i = 0; i < size; i++) {
@@ -14,5 +15,7 @@ t_files *mx_get_all_arg(char **argv, int size) {
             mx_push_file(&files, file);
         }
     }
+    if (files)
+        files->istotal = false;
     return files;
 }
