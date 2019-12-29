@@ -9,6 +9,10 @@ void mx_print_xcol_format(t_files *files, int flags, int size) {
     int files_line = get_files_line(len_filename);
     t_file *files_arr[size];
 
+    if (files->file->den_perms) {
+        mx_print_perm_error(files->file->filename);
+        return;
+    }
     files->len_file->filename_l = len_filename;
     for (int i = 0; i < size; i++) {
         files_arr[i] = files->file;

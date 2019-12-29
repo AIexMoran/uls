@@ -77,6 +77,9 @@ SRC = mx_uls.c \
 	mx_std_cmp.c \
 	mx_modf_time_cmp.c \
 	mx_size_cmp.c \
+	mx_print_dirs_recursive.c \
+	mx_sort_files_flags.c \
+	mx_filter_files.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

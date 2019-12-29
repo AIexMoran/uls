@@ -3,11 +3,11 @@
 static void print(t_file *file, int flags);
 
 void mx_print_long_format(t_files *files, int flags) {
+    if (files->file->den_perms) {
+        mx_print_perm_error(files->file->filename);
+        return;
+    }
     for (t_files *cur = files; cur; cur = cur->next) {
-        if (cur->file->den_perms) { // checks if file has perms denied
-            mx_print_perm_error(cur->file->filename);
-            continue;
-        }
         cur->file->len_file = files->len_file;
         print(cur->file, flags);
     }

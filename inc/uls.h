@@ -20,7 +20,7 @@
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-lgo1CxGAafSdTuUc" // all flags
+#define MX_FLAGS "-lgo1CxGAafSdTuUcR" // all flags
 #define MX_OUTPUT_FLAGS ~0xF
 #define MX_COMBINE_FLAGS ~0x380
 #define MX_SIZE_TERM 80
@@ -61,6 +61,7 @@
 #define MX_F_ISNL(f) ((f) & (n_FLAG))
 #define MX_F_ISGU(f) ((f) & (G_FLAG))
 #define MX_F_ISTL(f) ((f) & (t_FLAG))
+#define MX_F_ISRU(f) ((f) & (R_FLAG))
 
 #define MX_SET_COLOR "\x1b"
 #define MX_CLEAR_COLOR "[0m"
@@ -93,7 +94,8 @@ typedef enum s_flags {
     s_FLAG = 1 << 16,
     h_FLAG = 1 << 17,
     a_FLAG = 1 << 18,
-    A_FLAG = 1 << 19
+    A_FLAG = 1 << 19,
+    R_FLAG = 1 << 20
 } t_flags;
 
 //flags // edit mx_get_flag_bit!!!
@@ -210,6 +212,10 @@ t_files *mx_al_filter(t_files *files);
 bool mx_std_cmp(t_file *f_file, t_file *s_file);
 bool mx_modf_time_cmp(t_file *f_file, t_file *s_file);
 bool mx_size_cmp(t_file *f_file, t_file *s_file);
+int mx_print_dirs_recursive(t_files *dirs, int flags);
+void mx_sort_files_flags(t_files *dirs, int flags);
+t_files *mx_filter_files(t_files *files, int flags);
+void mx_free_filtered(t_files **filtered);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);

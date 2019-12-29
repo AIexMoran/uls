@@ -13,6 +13,8 @@ int mx_get_flag_bit(char bit) {
         return S_FLAG;
     if (bit == 'd')
         return d_FLAG;
+    if (bit == 'R')
+        return R_FLAG;
     return 0;
 }
 

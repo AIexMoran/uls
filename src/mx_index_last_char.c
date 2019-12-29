@@ -7,5 +7,5 @@ int mx_index_last_char(char *str, char c) {
     mx_str_reverse(str);
     index = mx_get_char_index(str, c);
     mx_str_reverse(str);
-    return length - index;
+    return index == -1 ? 0 : length - index;
 }
