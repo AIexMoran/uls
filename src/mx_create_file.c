@@ -10,6 +10,7 @@ t_file* mx_create_file(char *relative_path, char *filename) {
     new_file->filename = mx_strdup(filename);
     new_file->relative_path = mx_strdup(relative_path);
     new_file->full_path = mx_get_full_path(filename, relative_path);
+    new_file->den_perms = false;
     lstat(new_file->full_path, &file_stat);
     get_attributes(new_file, file_stat);
     return new_file;

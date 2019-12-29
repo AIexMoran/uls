@@ -15,6 +15,7 @@ void mx_get_attr_acl(t_file *file) {
     if (acl != NULL && !mx_strcmp(file->acl_attr, "  ")) {
         mx_strdel(&file->acl_attr);
         file->acl_attr = mx_strdup("+ ");
-        acl_free(acl);
     }
+    if (acl != NULL)
+        acl_free(acl);
 }

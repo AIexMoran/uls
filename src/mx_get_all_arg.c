@@ -5,7 +5,7 @@ t_files *mx_get_all_arg(char **argv, int size) {
     t_file *file = NULL;
 
     if (!size) {
-        mx_push_file(&files, mx_create_file("./", "."));
+        mx_push_file(&files, mx_create_file("", "."));
         files->istotal = false;
         return files;
     }
