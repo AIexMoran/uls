@@ -28,8 +28,6 @@ int mx_print_dirs_recursive(t_files *dirs, int flags) {
 }
 
 static bool is_print(t_files *files, t_files *dirs) {
-    if (!files)
-        return false;
     files->isfirst = dirs->isfirst;
     if ((files->file->perms[0] != 'd' ||
         !mx_strcmp(files->file->filename, "..") ||
@@ -37,12 +35,17 @@ static bool is_print(t_files *files, t_files *dirs) {
         !dirs->isfirst) {
         return true;
     }
+    mx_add_slash(files->file);
     return false;
 }
 
 static void print_name(t_files *cur, t_files *dirs) {
+    int len = mx_strlen(cur->file->full_path);
+
+    cur->file->full_path[len - 1] = '\0';
     mx_extend_name(cur, dirs);
     mx_print_name(cur);
+    cur->file->full_path[len - 1] = '/';
     if (!dirs->isname)
         dirs->isname = true;
 }

@@ -80,6 +80,7 @@ SRC = mx_uls.c \
 	mx_print_dirs_recursive.c \
 	mx_sort_files_flags.c \
 	mx_filter_files.c \
+	mx_add_slash.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

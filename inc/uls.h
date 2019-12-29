@@ -217,6 +217,7 @@ int mx_print_dirs_recursive(t_files *dirs, int flags);
 void mx_sort_files_flags(t_files *dirs, int flags);
 t_files *mx_filter_files(t_files *files, int flags);
 void mx_free_filtered(t_files **filtered);
+void mx_add_slash(t_file *cur);
 
 char *mx_get_full_path(char *filename, char *relative_path);
 void mx_get_size(t_file *file, struct stat file_stat);
