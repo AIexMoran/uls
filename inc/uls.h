@@ -150,6 +150,7 @@ typedef struct s_file {
 typedef struct s_files { // struct for files
     t_file *file; // file
     t_len_file *len_file;
+    bool isfirst;
     bool istotal; // print total
     bool isname; // print name 
     struct s_files *next; // next file

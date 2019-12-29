@@ -26,8 +26,10 @@ static int print_files(t_files *all_files, t_files *files, t_files *dirs, int fl
         mx_print_files(files, flags);
     mx_print_nl(files && dirs);
     if (MX_F_ISRU(flags)) {
+        dirs->isfirst = true;
         if (dirs)
             retval = mx_print_dirs_recursive(dirs, flags);
+        mx_printstr("\x1B[A");
     }
     else {
         if (dirs)

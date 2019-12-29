@@ -7,4 +7,7 @@ void mx_set_name(t_files *files, int size) {
     if (size > 1) {
         files->isname = true;
     }
+    else {
+        files->isname = false;
+    }
 }

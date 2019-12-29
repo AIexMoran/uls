@@ -3,6 +3,7 @@
 static void print_name(t_files *cur, t_files *dirs);
 static int print(t_files *filtered, t_files *dirs, int flags);
 static void del_all(t_files *files, t_files *filtered);
+static bool is_print(t_files *files, t_files *dirs);
 
 int mx_print_dirs_recursive(t_files *dirs, int flags) {
     int retval = 0;
@@ -10,7 +11,7 @@ int mx_print_dirs_recursive(t_files *dirs, int flags) {
     t_files *filtered = NULL;
 
     for (t_files *cur = dirs; cur; cur = cur->next) {
-        if (cur->file->perms[0] != 'd') {
+        if (is_print(cur, dirs)) {
             continue;
         }
         print_name(cur, dirs);
@@ -24,6 +25,19 @@ int mx_print_dirs_recursive(t_files *dirs, int flags) {
         del_all(files, filtered);
     }
     return retval;
+}
+
+static bool is_print(t_files *files, t_files *dirs) {
+    if (!files)
+        return false;
+    files->isfirst = dirs->isfirst;
+    if ((files->file->perms[0] != 'd' ||
+        !mx_strcmp(files->file->filename, "..") ||
+        !mx_strcmp(files->file->filename, ".")) &&
+        !dirs->isfirst) {
+        return true;
+    }
+    return false;
 }
 
 static void print_name(t_files *cur, t_files *dirs) {
@@ -46,6 +60,7 @@ static int print(t_files *filtered, t_files *dirs, int flags) {
     }
     if (filtered->file->den_perms)
         retval = 1;
+    filtered->isfirst = false;
     mx_extend_name(filtered, dirs);
     mx_extend_total(filtered, dirs);
     mx_print_files(filtered, flags);

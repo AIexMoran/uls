@@ -7,6 +7,7 @@ t_files *mx_get_dirs_arg(char **argv, int size) {
 
     if (!size) {
         mx_push_file(&dirs, mx_create_file("", "."));
+        mx_set_name(dirs, size);
         return dirs;
     }
     for (int i = 0; i < size; i++) {
