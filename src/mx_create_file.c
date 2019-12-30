@@ -17,11 +17,11 @@ t_file* mx_create_file(char *relative_path, char *filename) {
 }
 
 static void get_attributes(t_file *new_file, struct stat file_stat) {
+    mx_get_permissions(new_file, file_stat);
     mx_get_attr_acl(new_file);
     mx_get_size(new_file, file_stat);
     mx_get_owner(new_file, file_stat);
     mx_get_mtime(new_file, file_stat);
-    mx_get_permissions(new_file, file_stat);
     mx_get_links(new_file, file_stat);
     mx_get_group(new_file, file_stat);
     mx_get_block_size(new_file, file_stat);

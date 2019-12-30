@@ -11,11 +11,13 @@ void mx_get_attr_acl(t_file *file) {
         mx_strdel(&file->acl_attr);
         file->acl_attr = mx_strdup("@ ");
     }
+    if (mx_islink(file)) {
+        return;
+    }
     acl = acl_get_file(file->full_path, type);
     if (acl != NULL && !mx_strcmp(file->acl_attr, "  ")) {
         mx_strdel(&file->acl_attr);
         file->acl_attr = mx_strdup("+ ");
     }
-    if (acl != NULL)
-        acl_free(acl);
+    acl_free(acl);
 }
