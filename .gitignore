@@ -5,3 +5,5 @@ README.md
 obj
 uls.dSYM
 libmx/libmx.a
+libmx/obj
+obj
