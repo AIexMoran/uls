@@ -9,8 +9,9 @@ void mx_get_ctime(t_file *file, struct stat file_stat) {
     file->d_creation_time = file_stat.st_birthtime;
     str = ctime(&file_stat.st_birthtime);
     l_str = mx_strlen(str);
-    file->full_creation_time = mx_strdup(str);
-
+    file->full_creation_time = mx_strnew(l_str - 5);
+    file->full_creation_time = mx_strncpy(file->full_creation_time,
+             str + 4, l_str - 5);
     if (time(NULL) - file->d_modf_time < 31556926 / 2
              && ((time(NULL) - file->d_modf_time >= 0))) {
         file->creation_time = mx_strnew(l_str - 13);
