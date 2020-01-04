@@ -20,7 +20,7 @@
 #include "inc/libmx.h"
 
 //flags //edit mx_get_flag_bit!!!
-#define MX_FLAGS "-lgo1CxGAafSdTuUcR" // all flags
+#define MX_FLAGS "-ACGRSTUacdfglorux1" // all flags
 #define MX_OUTPUT_FLAGS ~0xF
 #define MX_COMBINE_FLAGS ~0x380
 #define MX_SIZE_TERM 80
@@ -62,6 +62,7 @@
 #define MX_F_ISGU(f) ((f) & (G_FLAG))
 #define MX_F_ISTL(f) ((f) & (t_FLAG))
 #define MX_F_ISRU(f) ((f) & (R_FLAG))
+#define MX_F_ISRL(f) ((f) & (r_FLAG))
 
 #define MX_SET_COLOR "\x1b"
 #define MX_CLEAR_COLOR "[0m"
@@ -95,7 +96,8 @@ typedef enum s_flags {
     h_FLAG = 1 << 17,
     a_FLAG = 1 << 18,
     A_FLAG = 1 << 19,
-    R_FLAG = 1 << 20
+    R_FLAG = 1 << 20,
+    r_FLAG = 1 << 21
 } t_flags;
 
 //flags // edit mx_get_flag_bit!!!
