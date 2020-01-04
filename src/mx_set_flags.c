@@ -15,7 +15,7 @@ int mx_set_flags(char **argv, int end_flags) {
         set_bit(&flags, argv[i]);
     }
     flags &= is_atty ? flags : ~G_FLAG;
-    return flags;   
+    return flags;
 }
 
 static void set_combine_bit(int *flags, char *argv) {

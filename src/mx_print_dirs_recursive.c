@@ -19,9 +19,9 @@ int mx_print_dirs_recursive(t_files *dirs, int flags) {
         filtered = mx_filter_files(files, flags);
         if (filtered)
             mx_sort_files_flags(filtered, flags);
-        retval = retval == 1 ? 1 : print(filtered, dirs, flags);
+        retval += print(filtered, dirs, flags);
         mx_printstr("\n");
-        retval = retval == 1 ? 1 : mx_print_dirs_recursive(filtered, flags);
+        retval += mx_print_dirs_recursive(filtered, flags);
         del_all(files, filtered);
     }
     return retval;
