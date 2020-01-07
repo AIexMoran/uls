@@ -16,19 +16,15 @@ void mx_sort_files_flags(t_files *files, int flags) {
 }
 
 t_files *reverse_files(t_files *files, int flags) {
-    t_files *previous = NULL;
-    t_files *current = files;
-    t_files *next;
-
     if (MX_F_ISRL(flags)) {
-        mx_printstr("OK\n");
-        while (current != NULL) {
-            next = current->next;
-            current->next = previous;
-            previous = current;
-            current = next;
+        t_file *tmp = NULL;
+        for (t_files *i = files; i->next; i = i->next) {
+            for (t_files *j = i->next; j; j = j->next) {
+                tmp = i->file;
+                i->file = j->file;
+                j->file = tmp;
+            }         
         }
-        files = previous;
     }
     return files;
 }
