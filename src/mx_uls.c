@@ -4,7 +4,6 @@ static int test_main(int argc, char **argv);
 
 int main(int argc, char **argv) {
     int retval = test_main(argc, argv);
-    system("leaks -q uls");
     return retval;
 }
 
