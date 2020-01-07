@@ -43,7 +43,7 @@ static void print(t_file *files_arr[], int flags, int size, int files_line) {
 static int get_rows(int size, int files_line) {
     int rows = size / files_line;
 
-    if (size % files_line) 
+    if (size % files_line)
         rows++;
     return rows;
 }

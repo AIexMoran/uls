@@ -18,7 +18,7 @@ t_files *mx_get_all_dir(t_file *dir) {
             mx_push_file(&files, tmp_file);
         }
         closedir(directory);
-    } 
+    }
     mx_strdel(&full_path);
     return files;
 }

@@ -5,7 +5,7 @@ static void get_old_time(t_file *file, char *str, int length);
 void mx_get_stime(t_file *file, struct stat file_stat) {
     char *str;
     int l_str;
-    
+
     file->d_status_time = file_stat.st_ctime;
     str = ctime(&file_stat.st_ctime);
     l_str = mx_strlen(str);
