@@ -1,13 +1,13 @@
 #include "uls.h"
 
-static int test_main(int argc, char **argv);
+static int start(int argc, char **argv);
 
 int main(int argc, char **argv) {
-    int retval = test_main(argc, argv);
+    int retval = start(argc, argv);
     return retval;
 }
 
-static int test_main(int argc, char **argv) {
+static int start(int argc, char **argv) {
     int end_flags = mx_get_end_flags(argv, argc);
     int flags = mx_set_flags(argv, end_flags);
     int retval = 0;

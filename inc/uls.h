@@ -20,7 +20,7 @@
 #include "inc/libmx.h"
 
 #define MX_FLAGS "-ACGRSTUacdfglorux1"
-#define MX_OUTPUT_FLAGS ~0xF
+#define MX_OUTPUT_FLAGS ~0x3F
 #define MX_COMBINE_FLAGS ~0x380
 #define MX_SIZE_TERM 80
 #define MX_F_LONG(f) (((f) & (l_FLAG)) || ((f) & (g_FLAG)) || ((f) & (o_FLAG)))
