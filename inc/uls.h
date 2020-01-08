@@ -19,6 +19,10 @@
 #include <limits.h>
 #include "inc/libmx.h"
 
+#define MX_USR 1
+#define MX_GRP 2
+#define MX_OTH 4
+
 #define MX_FLAGS "-ACGRSTUacdfglorux1"
 #define MX_OUTPUT_FLAGS ~0x3F
 #define MX_COMBINE_FLAGS ~0x380

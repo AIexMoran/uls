@@ -11,7 +11,7 @@ void mx_get_mtime(t_file *file, struct stat file_stat) {
     length_str = mx_strlen(str);
     file->full_modf_time = mx_strnew(length_str - 5);
     file->full_modf_time = mx_strncpy(file->full_modf_time,
-             str + 4, length_str - 5);
+    str + 4, length_str - 5);
     if (time(NULL) - file->d_modf_time < 31556926 / 2
         && ((time(NULL) - file->d_modf_time >= 0))) {
         file->modf_time = mx_strnew(length_str - 13);

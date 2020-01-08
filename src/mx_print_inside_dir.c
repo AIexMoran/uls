@@ -1,6 +1,6 @@
 #include "uls.h"
 
-int mx_print_inside_dir(t_files *dirs, int flags) { //TODO
+int mx_print_inside_dir(t_files *dirs, int flags) {
     t_files *files = NULL;
     int retval = 0;
 

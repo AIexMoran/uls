@@ -15,6 +15,7 @@ static int start(int argc, char **argv) {
     mx_check_flags(argv, argc);
     mx_sort_args(argc, end_flags, argv, flags);
     retval += mx_check_args(argv, end_flags, argc);
-    retval += mx_handle_files(argv + end_flags + 1, argc - end_flags - 1, flags);
+    retval += mx_handle_files(argv + end_flags + 1,
+    argc - end_flags - 1, flags);
     return retval > 0 ? 1 : 0;
 }

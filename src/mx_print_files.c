@@ -2,7 +2,7 @@
 
 static void print_format(t_files *files, int flags, int size);
 
-void mx_print_files(t_files *files, int flags) { //TODO
+void mx_print_files(t_files *files, int flags) {
     int size = 0;
     t_files *filtered = NULL;
 

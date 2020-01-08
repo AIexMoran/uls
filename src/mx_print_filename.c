@@ -2,7 +2,7 @@
 
 static void print_link(t_file *file, int flags);
 
-void mx_print_filename(t_file *file, int flags) { //TODO 
+void mx_print_filename(t_file *file, int flags) {
     mx_enable_color(file->perms, flags);
     mx_printstr(file->filename);
     if (mx_islink(file)) {

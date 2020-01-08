@@ -11,11 +11,12 @@ void mx_get_stime(t_file *file, struct stat file_stat) {
     l_str = mx_strlen(str);
     file->full_status_time = mx_strnew(l_str - 5);
     file->full_status_time = mx_strncpy(file->full_status_time,
-            str + 4, l_str - 5);
+    str + 4, l_str - 5);
     if (time(NULL) - file->d_modf_time < 31556926 / 2
         && ((time(NULL) - file->d_modf_time >= 0))) {
         file->status_time = mx_strnew(l_str - 13);
-        file->status_time = mx_strncpy(file->status_time, str + 4, l_str - 13);
+        file->status_time = mx_strncpy(file->status_time,
+        str + 4, l_str - 13);
         return;
     }
     get_old_time(file, str, l_str);

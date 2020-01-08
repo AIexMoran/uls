@@ -1,9 +1,5 @@
 #include "uls.h"
 
-#define USR 1
-#define GRP 2
-#define OTH 4
-
 static char get_file_type(int mode);
 static char get_exec_mode(int mode, int user_type);
 static char get_char(int mode, int is_exec, int is_id);
@@ -14,13 +10,13 @@ void mx_get_permissions(t_file *file, struct stat file_stat) {
     permissions[0] = get_file_type(file_stat.st_mode);
     permissions[1] = (file_stat.st_mode & S_IRUSR) ? 'r' : '-';
     permissions[2] = (file_stat.st_mode & S_IWUSR) ? 'w' : '-';
-    permissions[3] = get_exec_mode(file_stat.st_mode, USR);
+    permissions[3] = get_exec_mode(file_stat.st_mode, MX_USR);
     permissions[4] = (file_stat.st_mode & S_IRGRP) ? 'r' : '-';
     permissions[5] = (file_stat.st_mode & S_IWGRP) ? 'w' : '-';
-    permissions[6] = get_exec_mode(file_stat.st_mode, GRP);
+    permissions[6] = get_exec_mode(file_stat.st_mode, MX_GRP);
     permissions[7] = (file_stat.st_mode & S_IROTH) ? 'r' : '-';
     permissions[8] = (file_stat.st_mode & S_IWOTH) ? 'w' : '-';
-    permissions[9] = get_exec_mode(file_stat.st_mode, OTH);
+    permissions[9] = get_exec_mode(file_stat.st_mode, MX_OTH);
     file->perms = permissions;
 }
 
@@ -40,9 +36,9 @@ static char get_char(int mode, int is_exec, int is_id) {
 }
 
 static char get_exec_mode(int mode, int user_type) {
-    if (user_type == USR)
+    if (user_type == MX_USR)
         return get_char(mode, S_IXUSR, S_ISUID);
-    else if (user_type == GRP)
+    else if (user_type == MX_GRP)
         return get_char(mode, S_IXGRP, S_ISGID);
     else {
         if (mode & S_IXOTH) {
