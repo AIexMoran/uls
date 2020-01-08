@@ -12,7 +12,7 @@ int mx_count_substr(const char *str, const char *sub) {
     char *sub_str = mx_strstr(str, sub);
 
     if (!length) {
-        return 0;
+       return 0;
     }
     if (sub_str && *str) {
         result++;

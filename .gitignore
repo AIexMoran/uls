@@ -7,3 +7,6 @@ uls.dSYM
 libmx/libmx.a
 libmx/obj
 obj
+CMakeLists.txt
+cmake-build-debug
+.idea
