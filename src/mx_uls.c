@@ -4,6 +4,7 @@ static int start(int argc, char **argv);
 
 int main(int argc, char **argv) {
     int retval = start(argc, argv);
+
     return retval;
 }
 

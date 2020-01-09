@@ -3,8 +3,8 @@
 static void print(t_file *file, int flags);
 
 void mx_print_long_format(t_files *files, int flags) {
-    if (files->file->den_perms) {
-        mx_print_perm_error(files->file->filename);
+    if (files->file->error) {
+        mx_print_perm_error(files->file);
         return;
     }
     for (t_files *cur = files; cur; cur = cur->next) {

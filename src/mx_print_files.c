@@ -6,7 +6,7 @@ void mx_print_files(t_files *files, int flags) {
     int size = 0;
     t_files *filtered = NULL;
 
-    if (!files->file->den_perms)
+    if (!files->file->error)
         filtered = mx_filter_files(files, flags);
     else
         mx_push_file(&filtered, files->file);

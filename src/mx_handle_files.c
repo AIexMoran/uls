@@ -19,7 +19,6 @@ int mx_handle_files(char **argv, int size, int flags) {
 static int print_files(t_files *all_files, t_files *files,
 t_files *dirs, int flags) {
     int retval = 0;
-
     if (MX_F_ISDL(flags)) {
         flags |= a_FLAG;
         mx_print_files(all_files, flags);
@@ -27,10 +26,9 @@ t_files *dirs, int flags) {
     if (files)
         mx_print_files(files, flags);
     mx_print_nl(files && dirs);
-    if (MX_F_ISRU(flags)) {
+    if (MX_F_ISRU(flags) && dirs) {
         dirs->isfirst = true;
-        if (dirs)
-            retval = mx_print_dirs_recursive(dirs, flags);
+        retval = mx_print_dirs_recursive(dirs, flags);
         mx_printstr("\x1B[A");
     }
     else {

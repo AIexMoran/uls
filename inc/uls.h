@@ -106,7 +106,7 @@ typedef struct s_len_file {
 
 typedef struct s_file {
     t_len_file *len_file;
-    bool den_perms;
+    int error;
     char *filename;
     char *relative_path;
     char *full_path;
@@ -191,7 +191,7 @@ void mx_print_1_format(t_files *files, int flags);
 void mx_print_col_format(t_files *files, int flags, int size);
 void mx_print_xcol_format(t_files *files, int flags, int size);
 int mx_files_size(t_files *files);
-void mx_print_perm_error(char *filename);
+void mx_print_perm_error(t_file *file);
 bool mx_is_spec_file(t_file *file);
 void mx_get_minmaj(t_file *new_file, struct stat file_stat);
 bool mx_islink(t_file *file);

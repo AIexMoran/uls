@@ -61,7 +61,7 @@ static int print(t_files *filtered, t_files *dirs, int flags) {
     if (!filtered) {
         return 0;
     }
-    if (filtered->file->den_perms)
+    if (filtered->file->error)
         retval = 1;
     filtered->isfirst = false;
     mx_extend_name(filtered, dirs);
