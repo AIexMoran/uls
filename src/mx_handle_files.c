@@ -29,7 +29,6 @@ t_files *dirs, int flags) {
     if (MX_F_ISRU(flags) && dirs) {
         dirs->isfirst = true;
         retval = mx_print_dirs_recursive(dirs, flags);
-        mx_printstr("\x1B[A");
     }
     else {
         if (dirs)

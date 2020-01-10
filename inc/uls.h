@@ -1,5 +1,4 @@
-#ifndef ULS_H
-#define ULS_H
+#pragma once
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -16,6 +15,7 @@
 #include <pwd.h>
 #include <string.h>
 #include <sys/errno.h>
+#include <fcntl.h>
 #include <limits.h>
 #include "inc/libmx.h"
 
@@ -223,5 +223,3 @@ void mx_get_ctime(t_file *file, struct stat file_stat);
 void mx_get_atime(t_file *file, struct stat file_stat);
 void mx_get_stime(t_file *file, struct stat file_stat);
 void mx_get_inode(t_file *file, struct stat file_stat);
-
-#endif

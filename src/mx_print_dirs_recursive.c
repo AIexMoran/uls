@@ -14,13 +14,13 @@ int mx_print_dirs_recursive(t_files *dirs, int flags) {
         if (is_print(cur, dirs)) {
             continue;
         }
+        mx_print_nl(!dirs->isfirst);
         print_name(cur, dirs);
         files = mx_get_all_dir(cur->file);
         filtered = mx_filter_files(files, flags);
         if (filtered)
             mx_sort_files_flags(filtered, flags);
         retval += print(filtered, dirs, flags);
-        mx_printstr("\n");
         retval += mx_print_dirs_recursive(filtered, flags);
         del_all(files, filtered);
     }
@@ -42,6 +42,7 @@ static bool is_print(t_files *files, t_files *dirs) {
 static void print_name(t_files *cur, t_files *dirs) {
     int len = mx_strlen(cur->file->full_path);
 
+    cur->isfirst = false;
     cur->file->full_path[len - 1] = '\0';
     mx_extend_name(cur, dirs);
     mx_print_name(cur);
