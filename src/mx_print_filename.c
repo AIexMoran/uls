@@ -1,10 +1,11 @@
 #include "uls.h"
 
 static void print_link(t_file *file, int flags);
+static void print_filtered_file(char *filename);
 
 void mx_print_filename(t_file *file, int flags) {
     mx_enable_color(file->perms, flags);
-    mx_printstr(file->filename);
+    print_filtered_file(file->filename);
     if (mx_islink(file)) {
         print_link(file, flags);
     }
@@ -22,6 +23,23 @@ static void print_link(t_file *file, int flags) {
         bytes_read = readlink(file->full_path, link, sizeof(link) - 1);
         link[bytes_read] = '\0';
         mx_printstr(" -> ");
-        mx_printstr(link);
+        print_filtered_file(file->filename);
     }
+}
+
+static void print_filtered_file(char *filename) {
+    char *filtered_filename = mx_strdup(filename);
+
+    for (int i = 0; i < mx_strlen(filtered_filename); i++) {
+        if (mx_isescape(filtered_filename[i])) {
+            filtered_filename[i] = '?';
+        }
+    }
+    if (!isatty(1)) {
+        mx_printstr(filename);
+    }
+    else {
+        mx_printstr(filtered_filename);
+    }
+    mx_strdel(&filtered_filename);
 }

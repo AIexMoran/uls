@@ -53,5 +53,6 @@ void mx_swap_char(char *s1, char *s2);
 void *mx_memmove(void *dst, const void *src, size_t len);
 void *mx_memcpy(void *restrict dst, const void *restrict src, size_t n);
 void *mx_realloc(void *ptr, size_t size);
+bool mx_isescape(char c);
 
 #endif
