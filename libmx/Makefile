@@ -56,9 +56,11 @@ install: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(AR) $@ $^
+	@printf "\x1b[32;1m$@ created\x1b[0m\n"
 
 $(OBJD)/%.o: $(SRCD)/%.c $(INCS)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+	@printf "\x1b[32mcompiled[libmx]: \x1b[0m[$(<:$(SRCD)/%.c=%.c)]\n"
 
 $(OBJS): | $(OBJD)
 
@@ -67,8 +69,10 @@ $(OBJD):
 
 uninstall: clean
 	@rm -rf $(NAME)
+	@printf "\x1b[34;1mdeleted libmx/$(NAME)\x1b[0m\n"
 
 clean:
 	@rm -rf $(OBJD)
+	@printf "\x1b[34;1mdeleted libmx/$(OBJD)\x1b[0m\n"
 
 reinstall: clean all

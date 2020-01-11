@@ -98,7 +98,6 @@ install: $(LBMXS) $(NAME)
 
 $(LBMXS):
 	@make -sC $(LBMXD) install
-	@printf "\x1b[32;1mcompiled: \x1b[0m$(LMBX)\n"
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(LBMXS) $(OBJS) -o $@
@@ -116,11 +115,11 @@ $(OBJD):
 uninstall: clean
 	@make -sC $(LBMXD) $@
 	@rm -rf $(NAME)
-	@printf "\x1b[34;1mdelted $(NAME)\x1b[0m\n"
+	@printf "\x1b[34;1mdeleted $(NAME)\x1b[0m\n"
 
 clean:
 	@make -sC $(LBMXD) $@
 	@rm -rf $(OBJD)
-	@printf "\x1b[34;1mdelted $(OBJD)\x1b[0m\n"
+	@printf "\x1b[34;1mdeleted $(OBJD)\x1b[0m\n"
 
 reinstall: clean all
