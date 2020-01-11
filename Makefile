@@ -98,24 +98,29 @@ install: $(LBMXS) $(NAME)
 
 $(LBMXS):
 	@make -sC $(LBMXD) install
+	@printf "\x1b[32;1mcompiled: \x1b[0m$(LMBX)\n"
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(LBMXS) $(OBJS) -o $@
+	@printf "\x1b[32;1m$@ created\x1b[0m\n"
 
 $(OBJD)/%.o: $(SRCD)/%.c $(INCS)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
+	@printf "\x1b[32mcompiled: \x1b[0m[$(<:$(SRCD)/%.c=%.c)]\n"
 
-$(OBJS): | $(OBJD)
+$(OBJS): |	 $(OBJD)
 
 $(OBJD):
 	@mkdir -p $@
 
 uninstall: clean
 	@make -sC $(LBMXD) $@
-	@rm -rf $(NAME)	
+	@rm -rf $(NAME)
+	@printf "\x1b[34;1mdelted $(NAME)\x1b[0m\n"
 
 clean:
 	@make -sC $(LBMXD) $@
 	@rm -rf $(OBJD)
+	@printf "\x1b[34;1mdelted $(OBJD)\x1b[0m\n"
 
 reinstall: clean all
