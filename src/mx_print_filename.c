@@ -23,7 +23,7 @@ static void print_link(t_file *file, int flags) {
         bytes_read = readlink(file->full_path, link, sizeof(link) - 1);
         link[bytes_read] = '\0';
         mx_printstr(" -> ");
-        print_filtered_file(file->filename);
+        print_filtered_file(link);
     }
 }
 
