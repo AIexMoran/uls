@@ -5,6 +5,7 @@
 >**3. ./uls [-ACGRSTUacdfglorux1] [file ...]**  
 ### Description:
 **Implementation of MacOS ls**  
+### Flags-table:
 
 | Flag |                         Description                        |
 |:----:|:----------------------------------------------------------:|
