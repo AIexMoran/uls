@@ -81,6 +81,7 @@ SRC = mx_uls.c \
 	mx_sort_files_flags.c \
 	mx_filter_files.c \
 	mx_add_slash.c \
+	mx_valid_link.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \

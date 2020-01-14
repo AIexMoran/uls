@@ -7,8 +7,8 @@ static void set_isarg(t_files *files);
 
 int mx_handle_files(char **argv, int size, int flags) {
     int retval = 0;
-    t_files *files = mx_get_files_arg(argv, size);
-    t_files *dirs = mx_get_dirs_arg(argv, size);
+    t_files *files = mx_get_files_arg(argv, size, flags);
+    t_files *dirs = mx_get_dirs_arg(argv, size, flags);
     t_files *all_files = mx_get_all_arg(argv, size);
 
     mx_set_total(dirs, flags);
