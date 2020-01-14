@@ -1,4 +1,6 @@
 # uls
+#### Implementation of MacOS ls
+
 | Flag |                         Description                        |
 |:----:|:----------------------------------------------------------:|
 |   A  | List all entries except for . and ..                       |
