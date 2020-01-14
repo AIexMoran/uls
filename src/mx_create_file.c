@@ -11,6 +11,7 @@ t_file* mx_create_file(char *relative_path, char *filename) {
     new_file->relative_path = mx_strdup(relative_path);
     new_file->full_path = mx_get_full_path(filename, relative_path);
     new_file->error = false;
+    new_file->isarg = false;
     lstat(new_file->full_path, &file_stat);
     get_attributes(new_file, file_stat);
     return new_file;

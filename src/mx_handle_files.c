@@ -3,6 +3,7 @@
 static void del_all(t_files *files, t_files *dirs, t_files *all_files);
 static int print_files(t_files *all_files, t_files *files,
 t_files *dirs, int flags);
+static void set_isarg(t_files *files);
 
 int mx_handle_files(char **argv, int size, int flags) {
     int retval = 0;
@@ -11,9 +12,19 @@ int mx_handle_files(char **argv, int size, int flags) {
     t_files *all_files = mx_get_all_arg(argv, size);
 
     mx_set_total(dirs, flags);
+    set_isarg(files);
+    set_isarg(dirs);
+    set_isarg(all_files);
     retval = print_files(all_files, files, dirs, flags);
     del_all(files, dirs, all_files);
     return retval;
+}
+
+static void set_isarg(t_files *files) {
+    while (files) {
+        files->file->isarg = true;
+        files = files->next;
+    }
 }
 
 static int print_files(t_files *all_files, t_files *files,

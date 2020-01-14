@@ -7,8 +7,9 @@ t_files *mx_A_filter(t_files *files) {
 
     while (cur) {
         filename = cur->file->filename;
-        if (mx_strcmp(filename, ".") &&
-            mx_strcmp(filename, "..")) {
+        if ((mx_strcmp(filename, ".") &&
+            mx_strcmp(filename, "..")) ||
+            cur->file->isarg) {
             mx_push_file(&filtered, cur->file);
         }
         cur = cur->next;

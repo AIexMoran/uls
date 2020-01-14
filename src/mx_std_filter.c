@@ -5,7 +5,8 @@ t_files *mx_std_filter(t_files *files) {
     t_files *cur = files;
 
     while (cur) {
-        if (cur->file->filename[0] != '.') {
+        if (cur->file->filename[0] != '.'
+            || cur->file->isarg) {
             mx_push_file(&filtered, cur->file);
         }
         cur = cur->next;

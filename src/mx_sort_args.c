@@ -3,6 +3,8 @@
 void mx_sort_args(int argc, int start, char **argv, int flags) {
     char *tmp = NULL;
 
+    if (!start)
+        start++;
     if (MX_F_ISFL(flags)) {
         return;
     }

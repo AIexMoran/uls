@@ -106,6 +106,7 @@ typedef struct s_len_file {
 
 typedef struct s_file {
     t_len_file *len_file;
+    bool isarg;
     int error;
     char *filename;
     char *relative_path;
