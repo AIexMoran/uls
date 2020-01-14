@@ -5,7 +5,7 @@ int mx_hash(void *data) {
     int hash = 7;
 
     for (int i = 0; i < mx_strlen(data); i++) {
-        hash *= bytes[i] * hash ^ 31;
+        hash = (hash << 5) + hash + bytes[i];
     }
     return hash;
 }
