@@ -40,6 +40,11 @@ SRC = mx_strnew.c \
 	mx_memcpy.c \
 	mx_pr_num_to_hex.c \
 	mx_isescape.c \
+	mx_hash.c \
+	mx_create_map.c \
+	mx_put_map.c \
+	mx_get_map.c \
+	mx_del_map.c \
 
 INCLUDE = -I $(INCD) \
 
@@ -75,4 +80,4 @@ clean:
 	@rm -rf $(OBJD)
 	@printf "\x1b[34;1mdeleted libmx/$(OBJD)\x1b[0m\n"
 
-reinstall: clean all
+reinstall: uninstall install

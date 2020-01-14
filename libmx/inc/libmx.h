@@ -1,5 +1,4 @@
-#ifndef LIBMX_H
-#define LIBMX_H
+#pragma once
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -18,6 +17,18 @@ typedef struct s_list {
     struct s_list *next;
 } t_list;
 
+
+typedef struct s_node {
+    void *data;
+    char *key;
+    struct s_node *next;
+} t_node;
+
+typedef struct s_map {
+    t_node **nodes;
+    size_t size;
+} t_map;
+
 t_list *mx_sort_list(t_list *lst, bool (*cmp)(void *, void *));
 int mx_list_size(t_list *list);
 t_list  *mx_create_node(void *data);
@@ -25,6 +36,11 @@ void mx_push_front(t_list **list, void *data);
 void mx_push_back(t_list **list, void *data);
 void mx_pop_front(t_list **head);
 void mx_pop_back(t_list **head);
+
+t_map *mx_create_map(size_t size);
+void mx_put_map(t_map **map, char *key, void *value);
+void *mx_get_map(t_map **map, char *key);
+void mx_del_map(t_map **map);
 
 char *mx_pr_num_to_hex(unsigned long num);
 void mx_del_strarr(char ***strs);
@@ -54,5 +70,4 @@ void *mx_memmove(void *dst, const void *src, size_t len);
 void *mx_memcpy(void *restrict dst, const void *restrict src, size_t n);
 void *mx_realloc(void *ptr, size_t size);
 bool mx_isescape(char c);
-
-#endif
+int mx_hash(void *data);

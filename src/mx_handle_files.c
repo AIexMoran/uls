@@ -19,9 +19,11 @@ int mx_handle_files(char **argv, int size, int flags) {
 static int print_files(t_files *all_files, t_files *files,
 t_files *dirs, int flags) {
     int retval = 0;
+
     if (MX_F_ISDL(flags)) {
         flags |= a_FLAG;
         mx_print_files(all_files, flags);
+        return retval;
     }
     if (files)
         mx_print_files(files, flags);

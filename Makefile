@@ -94,12 +94,12 @@ CFLAGS = -std=c99 $(addprefix -W, all extra error pedantic)
 
 all: install clean
 
-install: $(LBMXS) $(NAME)
+install: install_lib $(NAME)
 
-$(LBMXS):
+install_lib:
 	@make -sC $(LBMXD) install
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LBMXS)
 	@$(CC) $(CFLAGS) $(LBMXS) $(OBJS) -o $@
 	@printf "\x1b[32;1m$@ created\x1b[0m\n"
 
@@ -112,6 +112,8 @@ $(OBJS): |	 $(OBJD)
 $(OBJD):
 	@mkdir -p $@
 
+
+
 uninstall: clean
 	@make -sC $(LBMXD) $@
 	@rm -rf $(NAME)
@@ -122,4 +124,4 @@ clean:
 	@rm -rf $(OBJD)
 	@printf "\x1b[34;1mdeleted $(OBJD)\x1b[0m\n"
 
-reinstall: clean all
+reinstall: uninstall install
