@@ -11,7 +11,7 @@ t_files *mx_get_all_dir(t_file *dir) {
 
     if (!directory) {
         tmp_file = mx_create_file(full_path, dir->filename);
-        tmp_file->error = dir->error;
+        tmp_file->error = errno;
         mx_push_file(&files, tmp_file);
     }
     else {
