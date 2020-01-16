@@ -92,6 +92,7 @@ SRCS = $(addprefix $(SRCD)/, $(SRC))
 OBJS = $(addprefix $(OBJD)/, $(SRC:%.c=%.o))
 	
 CFLAGS = -std=c99 $(addprefix -W, all extra error pedantic)
+CC = clang
 
 all: install clean
 
