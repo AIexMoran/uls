@@ -1,5 +1,11 @@
 # uls
-#### Implementation of MacOS ls
+### Installation:
+>**1. git clone --recursive**  
+>**2. make**  
+>**3. ./uls [-ACGRSTUacdfglorux1] [file ...]**  
+### Description:
+**Implementation of MacOS ls**  
+### Flags-table:
 
 | Flag |                         Description                        |
 |:----:|:----------------------------------------------------------:|
