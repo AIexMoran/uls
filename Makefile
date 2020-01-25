@@ -94,12 +94,12 @@ OBJS = $(addprefix $(OBJD)/, $(SRC:%.c=%.o))
 CFLAGS = -std=c99 $(addprefix -W, all extra error pedantic)
 CC = clang
 
-all: install clean
+all: $(NAME)
 
-install: install_lib $(NAME)
+install: $(NAME) clean
 
-install_lib:
-	@make -sC $(LBMXD) install
+$(LBMXS):
+	@make -sC $(LBMXD)
 
 $(NAME): $(OBJS) $(LBMXS)
 	@$(CC) $(CFLAGS) $(LBMXS) $(OBJS) -o $@
@@ -109,12 +109,10 @@ $(OBJD)/%.o: $(SRCD)/%.c $(INCS)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 	@printf "\x1b[32mcompiled: \x1b[0m[$(<:$(SRCD)/%.c=%.c)]\n"
 
-$(OBJS): |	 $(OBJD)
+$(OBJS): | $(OBJD)
 
 $(OBJD):
 	@mkdir -p $@
-
-
 
 uninstall: clean
 	@make -sC $(LBMXD) $@
