@@ -5,7 +5,7 @@ t_files *mx_filter_files(t_files *files, int flags) {
         return mx_al_filter(files);
     }
     else if (MX_F_ISAU(flags)) {
-        return mx_a_filter(files);
+        return mx_au_filter(files);
     }
     else if (!MX_F_ISAL(flags)) {
         return mx_std_filter(files);

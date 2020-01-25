@@ -199,7 +199,7 @@ bool mx_islink(t_file *file);
 void mx_enable_color(char *perms, int flags);
 void mx_disable_color(int flags);
 t_files *mx_std_filter(t_files *files);
-t_files *mx_a_filter(t_files *files);
+t_files *mx_au_filter(t_files *files);
 t_files *mx_al_filter(t_files *files);
 bool mx_std_cmp(t_file *f_file, t_file *s_file);
 bool mx_modf_time_cmp(t_file *f_file, t_file *s_file);

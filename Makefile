@@ -72,7 +72,7 @@ SRC = mx_uls.c \
 	mx_enable_color.c \
 	mx_disable_color.c \
 	mx_std_filter.c \
-	mx_a_filter.c \
+	mx_au_filter.c \
 	mx_al_filter.c \
 	mx_std_cmp.c \
 	mx_modf_time_cmp.c \
