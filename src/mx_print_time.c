@@ -3,7 +3,7 @@
 static char *get_full_time(t_file *file, int flags);
 static char *get_time(t_file *file, int flags);
 
-void mx_print_time(t_file *file, int flags) { //TODO
+void mx_print_time(t_file *file, int flags) {
     char *format_str = NULL;
 
     if (MX_F_ISTU(flags)) {
