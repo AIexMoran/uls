@@ -1,6 +1,6 @@
 #include "uls.h"
 
-t_files *mx_A_filter(t_files *files) {
+t_files *mx_a_filter(t_files *files) {
     t_files *filtered = NULL;
     t_files *cur = files;
     char *filename = NULL;
