@@ -1,6 +1,6 @@
 # uls
 ### Installation:
->**1. git clone --recursive**  
+>**1. git clone --recursive https://github.com/AIexMoran/uls**  
 >**2. make**  
 >**3. ./uls [-ACGRSTUacdfglorux1] [file ...]**  
 ### Description:
